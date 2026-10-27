@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <link
+      rel="icon"
+      type="image/png"
+      href="/logos/ales-biliato-monograma.png?v=2"
+    />
+    <link
+      rel="shortcut icon"
+      type="image/png"
+      href="/logos/ales-biliato-monograma.png?v=2"
+    />
+    <link
+      rel="apple-touch-icon"
+      href="/logos/ales-biliato-monograma.png?v=2"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <meta name="robots" content="noindex, nofollow, noarchive" />
+
+    <title>Cuestionario inicial | Ales Biliato</title>
+
+    <meta
+      name="description"
+      content="Cuestionario inicial para preparar un nuevo proyecto web con Ales Biliato."
+    />
+  </head>
+
+  <body>
+    <div id="cuestionario-app"></div>
+
+    <form
+      name="cuestionario-web"
+      method="POST"
+      data-netlify="true"
+      data-netlify-honeypot="bot-field"
+      hidden
+    >
+      <input type="text" name="bot-field" />
+      <input type="text" name="nombre" />
+      <input type="email" name="email" />
+      <input type="text" name="negocio" />
+      <textarea name="actividad"></textarea>
+
+      <input type="radio" name="situacion-web" />
+      <input type="url" name="web-actual" />
+
+      <input type="checkbox" name="objetivos" />
+      <textarea name="accion-principal"></textarea>
+
+      <textarea name="publico"></textarea>
+      <input type="text" name="zona" />
+
+      <textarea name="contenido-principal"></textarea>
+      <textarea name="contenido-obligatorio"></textarea>
+
+      <input type="radio" name="identidad-visual" />
+      <textarea name="percepcion"></textarea>
+      <textarea name="referencias"></textarea>
+
+      <input type="checkbox" name="funcionalidades" />
+      <textarea name="otras-funcionalidades"></textarea>
+
+      <input type="radio" name="estado-contenidos" />
+      <input type="text" name="plazo" />
+      <input type="text" name="presupuesto" />
+      <textarea name="comentarios"></textarea>
+
+      <input type="checkbox" name="privacidad" />
+    </form>
+
+    <script type="module" src="/src/cuestionario.js"></script>
+  </body>
+</html>

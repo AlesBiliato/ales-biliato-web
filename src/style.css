@@ -1,0 +1,678 @@
+/* ==================================================
+   1. CONFIGURACIÓN GLOBAL
+================================================== */
+
+:root {
+  --color-text: #171717;
+  --color-muted: #666;
+  --color-border: #d8d8d2;
+  --color-background: #f5f5f2;
+  --color-surface: #fff;
+
+  --font-size-h1: clamp(2rem, 3.5vw, 5.5rem);
+
+  font-family: Inter, system-ui, sans-serif;
+  color: var(--color-text);
+  background: var(--color-background);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* ==================================================
+   2. TIPOGRAFÍA
+================================================== */
+
+h1,
+h2,
+h3,
+p {
+  margin-top: 0;
+}
+
+h1 {
+  max-width: 800px;
+  margin-bottom: 1rem;
+  font-size: var(--font-size-h1);
+  line-height: 1.1;
+}
+
+h2 {
+  font-size: clamp(2rem, 3vw, 4rem);
+}
+
+.eyebrow {
+  color: var(--color-muted);
+  font-size: 0.8rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+/* ==================================================
+   3. CABECERA Y NAVEGACIÓN
+================================================== */
+
+.site-header {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 5vw;
+}
+
+.site-header::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 5vw;
+  right: 5vw;
+  height: 1px;
+  background: var(--color-border);
+}
+
+.brand {
+  display: block;
+  width: clamp(260px, 25vw, 360px);
+  flex-shrink: 0;
+}
+
+.brand img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.main-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+}
+
+.menu-toggle {
+  display: none;
+}
+
+/* ==================================================
+   4. HERO
+================================================== */
+
+.hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  align-items: center;
+  gap: clamp(2rem, 5vw, 6rem);
+  padding: 4rem 5vw;
+}
+
+.hero-content,
+.hero-visual {
+  min-width: 0;
+}
+
+.hero-visual video {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 8 / 5;
+  border-radius: 1rem;
+  background: rgb(245 243 239);
+  object-fit: cover;
+}
+
+.hero-video.is-playback-blocked {
+  cursor: pointer;
+}
+
+.hero-text {
+  max-width: 560px;
+  color: var(--color-muted);
+  font-size: 1.2rem;
+  line-height: 1.6;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+@media (max-width: 900px) {
+  .hero {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ==================================================
+   5. BOTONES
+================================================== */
+
+.button {
+  display: inline-block;
+  padding: 0.9rem 1.3rem;
+  border: 1px solid var(--color-text);
+  border-radius: 999px;
+  transition:
+    transform 0.25s ease,
+    background-color 0.25s ease,
+    color 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 18px rgb(0 0 0 / 30%);
+}
+
+.button-primary {
+  color: white;
+  background: var(--color-text);
+}
+
+.button-primary:hover {
+  color: white;
+  background: var(--color-text);
+}
+
+.button-secondary {
+  background: transparent;
+}
+
+.button-secondary:hover {
+  color: white;
+  background: var(--color-text);
+}
+
+.button:focus-visible {
+  outline: 3px solid #6aa9ff;
+  outline-offset: 4px;
+}
+
+.nav-button {
+  display: inline-block;
+  padding: 1rem 1.5rem;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.nav-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 18px rgb(0 0 0 / 30%);
+}
+
+/* ==================================================
+   6. SECCIONES GENERALES
+================================================== */
+
+.section {
+  min-height: 50vh;
+  padding: 4rem 5vw;
+  border-top: 1px solid var(--color-border);
+}
+
+/* ==================================================
+   7. PROYECTOS
+================================================== */
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-top: 3rem;
+}
+
+.project-card {
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+  border-radius: 1rem;
+  background: var(--color-surface);
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 24px rgb(0 0 0 / 30%);
+}
+
+.project-card > img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  height: auto;
+  background-color: var(--color-background);
+}
+
+.project-info {
+  padding: 1.5rem;
+}
+
+.project-type {
+  margin: 0;
+  color: var(--color-muted);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+}
+
+.project-info h3 {
+  margin: 0.6rem 0 0.75rem;
+  font-size: 1.5rem;
+}
+
+.project-description {
+  margin: 0 0 1.5rem;
+  color: var(--color-muted);
+  line-height: 1.6;
+}
+
+.project-link {
+  display: inline-block;
+  font-weight: 600;
+  transition: transform 0.25s ease;
+}
+
+.project-link:hover {
+  transform: translateX(4px);
+}
+
+/* ==================================================
+   8. SERVICIOS
+================================================== */
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  margin-top: 3rem;
+}
+
+.service-card {
+  min-height: 260px;
+  padding: 1.5rem;
+  border: 1px solid var(--color-border);
+  border-radius: 1rem;
+  background: var(--color-surface);
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.service-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 24px rgb(0 0 0 / 30%);
+}
+
+.service-card:focus-visible {
+  outline: 3px solid var(--color-text);
+  outline-offset: 4px;
+}
+
+.service-card img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  border-radius: 0.6rem;
+}
+
+.service-card span {
+  display: block;
+  margin-top: 1.25rem;
+}
+
+.service-card h3 {
+  margin-top: 0.75rem;
+  font-size: 1.5rem;
+}
+
+.service-card p {
+  color: var(--color-muted);
+  line-height: 1.6;
+}
+
+/* ==================================================
+   9. SOBRE MÍ
+================================================== */
+
+.about-section > .eyebrow {
+  margin-bottom: 3rem;
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5rem;
+  align-items: center;
+}
+
+.about-grid h2 {
+  margin: 0;
+}
+
+.about-content {
+  max-width: 520px;
+}
+
+.about-content p {
+  color: var(--color-muted);
+  font-size: 1.15rem;
+  line-height: 1.7;
+}
+
+/* ==================================================
+   10. ACCESIBILIDAD
+================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .button {
+    transition: none;
+  }
+
+  .button:hover {
+    transform: none;
+  }
+}
+
+/* ==================================================
+   11. RESPONSIVE
+================================================== */
+@media (max-width: 900px) {
+  .projects-grid,
+  .services-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 700px) {
+  .site-header {
+    position: relative;
+    flex-direction: row;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .menu-toggle {
+    display: block;
+    padding: 0.4rem 0.65rem;
+    border: 1px solid var(--color-text);
+    border-radius: 0.5rem;
+    color: var(--color-text);
+    background: transparent;
+    font-size: 1.5rem;
+    line-height: 1;
+    cursor: pointer;
+  }
+
+  .hero {
+    padding: 1.5rem 1rem;
+  }
+
+  .about-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .main-nav {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 5vw;
+    left: 5vw;
+    z-index: 10;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.8rem;
+    padding: 1rem;
+    border: 1px solid var(--color-border);
+    border-radius: 1rem;
+    background: var(--color-background);
+    box-shadow: 0 8px 18px rgb(0 0 0 / 15%);
+  }
+
+  .main-nav.is-open {
+    display: flex;
+  }
+
+  .brand {
+    width: min(60vw, 250px);
+  }
+}
+
+/* ==================================================
+   12. CONTACTO
+================================================== */
+
+.contact-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+  grid-template-areas:
+    "intro form"
+    "questionnaire form";
+  column-gap: clamp(2rem, 6vw, 7rem);
+  row-gap: 3rem;
+  align-items: start;
+  margin-top: 3rem;
+}
+
+.contact-intro h2 {
+  max-width: 650px;
+  margin-bottom: 1.5rem;
+}
+
+.contact-intro p {
+  max-width: 520px;
+  color: var(--color-muted);
+  font-size: 1.15rem;
+  line-height: 1.7;
+}
+
+.contact-intro {
+  grid-area: intro;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.contact-option h2,
+.contact-option h3 {
+  max-width: 650px;
+}
+
+.contact-option h3 {
+  margin-bottom: 1.5rem;
+  font-size: clamp(1.7rem, 2.5vw, 2.5rem);
+  line-height: 1.15;
+}
+
+.contact-questionnaire {
+  grid-area: questionnaire;
+  padding-top: 3rem;
+  border-top: 1px solid var(--color-border);
+}
+
+.contact-questionnaire .button {
+  margin-top: 1rem;
+}
+
+.contact-form {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.25rem;
+  padding: clamp(1.5rem, 3vw, 2.5rem);
+  border: 1px solid var(--color-border);
+  border-radius: 1rem;
+  background: var(--color-surface);
+  align-self: center;
+  grid-area: form;
+}
+
+.contact-form label {
+  display: grid;
+  gap: 0.5rem;
+  font-weight: 600;
+}
+
+.contact-form input:not([type="hidden"]),
+.contact-form textarea {
+  width: 100%;
+  padding: 0.9rem 1rem;
+  border: 1px solid var(--color-border);
+  border-radius: 0.75rem;
+  color: var(--color-text);
+  background: var(--color-background);
+  font: inherit;
+}
+
+.contact-form-message {
+  grid-column: 1 / -1;
+}
+
+.contact-form textarea {
+  resize: vertical;
+}
+
+.contact-form input:focus-visible,
+.contact-form textarea:focus-visible {
+  outline: 2px solid var(--color-text);
+  outline-offset: 2px;
+}
+
+.contact-form button {
+  grid-column: 1 / -1;
+  justify-self: start;
+  font: inherit;
+  cursor: pointer;
+}
+
+.contact-privacy {
+  grid-column: 1 / -1;
+  margin: 0;
+  color: var(--color-muted);
+  font-size: 0.88rem;
+  line-height: 1.6;
+}
+
+.contact-privacy a {
+  color: var(--color-text);
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+@media (max-width: 900px) {
+  .contact-layout {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "intro"
+      "form"
+      "questionnaire";
+    gap: 3rem;
+  }
+}
+
+@media (max-width: 700px) {
+  .contact-form {
+    grid-template-columns: 1fr;
+  }
+}
+
+.contact-feedback {
+  grid-column: 1 / -1;
+  margin: 0;
+  font-weight: 600;
+}
+
+.contact-form button:disabled {
+  opacity: 0.6;
+  cursor: wait;
+  transform: none;
+  box-shadow: none;
+}
+
+/* ==================================================
+   13. FOOTER
+================================================== */
+
+.site-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding: 2rem 5vw;
+  border-top: 1px solid var(--color-border);
+  color: var(--color-muted);
+  font-size: 0.9rem;
+}
+
+.site-footer p {
+  margin: 0;
+}
+
+.site-footer a:hover {
+  color: var(--color-text);
+}
+
+.back-to-top {
+  position: fixed;
+  right: 1.5rem;
+  bottom: 1.5rem;
+  z-index: 20;
+  padding: 0.8rem 1rem;
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  color: var(--color-text);
+  background: var(--color-surface);
+  box-shadow: 0 6px 18px rgb(0 0 0 / 12%);
+  display: grid;
+  place-items: center;
+  width: 3rem;
+  height: 3rem;
+  padding: 0;
+  border-radius: 50%;
+  font-size: 1.4rem;
+  line-height: 1;
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.back-to-top:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 18px rgb(0 0 0 / 30%);
+}
+
+.back-to-top:focus-visible {
+  outline: 3px solid #6aa9ff;
+  outline-offset: 3px;
+}
+
+@media (max-width: 700px) {
+  .back-to-top {
+    right: 1rem;
+    bottom: 1rem;
+  }
+}
