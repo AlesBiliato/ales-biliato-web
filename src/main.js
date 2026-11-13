@@ -1,5 +1,7 @@
 import "./style.css";
 import { initReveal } from "./reveal";
+import { initHeroAscii } from "./hero-ascii";
+import { initTheme } from "./theme";
 
 document.querySelector("#app").innerHTML = /* HTML */ `
   <header class="site-header">
@@ -28,10 +30,10 @@ document.querySelector("#app").innerHTML = /* HTML */ `
   <main>
     <section class="hero">
       <div class="hero-content">
-        <h1 data-animate>Páginas web claras, modernas y profesionales.</h1>
+        <h1 data-animate>Páginas web claras, modernas y profesionales</h1>
         <p class="hero-text" data-animate style="--delay: 150ms">
           Diseño y desarrollo de páginas web para pequeñas empresas y
-          profesionales que quieren mejorar su presencia digital.
+          profesionales que quieren mejorar su presencia digital
         </p>
 
         <div class="hero-actions" data-animate style="--delay: 300ms">
@@ -40,21 +42,7 @@ document.querySelector("#app").innerHTML = /* HTML */ `
         </div>
       </div>
 
-      <div class="hero-visual">
-        <video
-          class="hero-video"
-          autoplay
-          muted
-          loop
-          playsinline
-          webkit-playsinline
-          preload="auto"
-          controlslist="nodownload noplaybackrate"
-          aria-label="Animación abstracta de presentación"
-        >
-          <source src="/videos/hero-abstracto.mp4" type="video/mp4" />
-        </video>
-      </div>
+      <div class="hero-ascii" aria-hidden="true"></div>
     </section>
 
     <section id="proyectos" class="section projects-section" data-animate>
@@ -184,7 +172,7 @@ document.querySelector("#app").innerHTML = /* HTML */ `
       <p class="eyebrow">Mi enfoque</p>
       <div class="about-grid">
         <div>
-          <h2>Diseño y desarrollo con atención al detalle.</h2>
+          <h2>Diseño y desarrollo con atención al detalle</h2>
         </div>
 
         <div class="about-content">
@@ -295,44 +283,9 @@ initReveal();
 
 const menuToggle = document.querySelector(".menu-toggle");
 const mainNav = document.querySelector(".main-nav");
-const heroVideo = document.querySelector(".hero-video");
 
-function playHeroVideo() {
-  heroVideo.muted = true;
-  heroVideo.defaultMuted = true;
-  heroVideo.playsInline = true;
-
-  const playAttempt = heroVideo.play();
-
-  if (playAttempt) {
-    playAttempt
-      .then(() => {
-        heroVideo.controls = false;
-        heroVideo.classList.remove("is-playback-blocked");
-      })
-      .catch(() => {
-        heroVideo.controls = true;
-        heroVideo.classList.add("is-playback-blocked");
-      });
-  }
-}
-
-if (heroVideo.readyState >= 2) {
-  playHeroVideo();
-} else {
-  heroVideo.addEventListener("loadeddata", playHeroVideo, { once: true });
-}
-
-document.addEventListener("touchstart", playHeroVideo, {
-  once: true,
-  passive: true,
-});
-
-document.addEventListener("visibilitychange", () => {
-  if (!document.hidden && heroVideo.paused) {
-    playHeroVideo();
-  }
-});
+const pageRays = initTheme();
+initHeroAscii(pageRays);
 
 function closeMenu() {
   mainNav.classList.remove("is-open");
