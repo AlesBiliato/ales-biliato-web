@@ -1,6 +1,9 @@
 import "./style.css";
 import "./proyecto.css";
 import { initReveal } from "./reveal";
+import { initTheme } from "./theme";
+
+initTheme();
 
 function getRequiredElement<T extends Element>(selector: string): T {
   const element = document.querySelector<T>(selector);
@@ -101,7 +104,7 @@ app.innerHTML = /* HTML */ `
       <p class="eyebrow">El proyecto</p>
 
       <div class="project-two-columns">
-        <h2>Una herramienta para registrar y analizar partidos de vóley.</h2>
+        <h2>Una herramienta para registrar y analizar partidos de vóley</h2>
 
         <div class="project-copy">
           <p>
@@ -122,7 +125,7 @@ app.innerHTML = /* HTML */ `
       <p class="eyebrow">El objetivo</p>
 
       <div class="project-two-columns">
-        <h2>Registrar información durante el partido sin perder agilidad.</h2>
+        <h2>Registrar información durante el partido sin perder agilidad</h2>
 
         <div class="project-copy">
           <p>
@@ -143,7 +146,7 @@ app.innerHTML = /* HTML */ `
     <section class="section project-solution" data-animate>
       <p class="eyebrow">La solución</p>
 
-      <h2>Una estructura diseñada para registrar y consultar cada partido.</h2>
+      <h2>Una estructura diseñada para registrar y consultar cada partido</h2>
 
       <div class="project-feature-grid" data-stagger>
         <article class="project-feature" data-animate>
@@ -188,7 +191,7 @@ app.innerHTML = /* HTML */ `
       <div class="project-showcase-heading">
         <p class="eyebrow">Experiencia de escritorio</p>
 
-        <h2>Una vista completa del partido y sus principales controles.</h2>
+        <h2>Una vista completa del partido y sus principales controles</h2>
       </div>
 
       <div class="desktop-mockup">
@@ -214,7 +217,7 @@ app.innerHTML = /* HTML */ `
       <div class="project-responsive-content">
         <p class="eyebrow">Experiencia en tablet</p>
 
-        <h2>Diseñada para registrar el partido desde la pista.</h2>
+        <h2>Diseñada para registrar el partido desde la pista</h2>
 
         <p>
           La interfaz aprovecha el espacio horizontal de la tablet para mostrar
@@ -237,7 +240,7 @@ app.innerHTML = /* HTML */ `
       <p class="eyebrow">El resultado</p>
 
       <div class="project-two-columns">
-        <h2>Los datos del partido convertidos en información útil.</h2>
+        <h2>Los datos del partido convertidos en información útil</h2>
 
         <div class="project-copy">
           <p>

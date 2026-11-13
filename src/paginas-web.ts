@@ -1,5 +1,8 @@
 import "./style.css";
 import "./paginas-web.css";
+import { initTheme } from "./theme";
+
+initTheme();
 
 function getRequiredElement<T extends Element>(selector: string): T {
   const element = document.querySelector<T>(selector);
@@ -43,7 +46,7 @@ app.innerHTML = /* HTML */ `
         <p class="eyebrow">Diseño y desarrollo web</p>
 
         <h1>
-          Una página web profesional para presentar tu negocio con claridad.
+          Una página web profesional para presentar tu negocio con claridad
         </h1>
 
         <p class="service-hero-text">
@@ -77,7 +80,7 @@ app.innerHTML = /* HTML */ `
       <div class="service-introduction-grid">
         <h2>
           Tu web debe ayudar a entender quién eres, qué ofreces y cómo
-          contactar.
+          contactar
         </h2>
 
         <div>
@@ -98,7 +101,7 @@ app.innerHTML = /* HTML */ `
 
     <section id="que-incluye" class="section service-includes">
       <p class="eyebrow">Qué incluye</p>
-      <h2>Todo lo necesario para publicar una web profesional.</h2>
+      <h2>Todo lo necesario para publicar una web profesional</h2>
 
       <div class="service-feature-grid">
         <article class="service-feature">
@@ -160,7 +163,7 @@ app.innerHTML = /* HTML */ `
 
     <section class="section service-audience">
       <p class="eyebrow">Para quién es</p>
-      <h2>Una solución pensada para negocios que necesitan avanzar.</h2>
+      <h2>Una solución pensada para negocios que necesitan avanzar</h2>
 
       <div class="service-audience-grid">
         <article>

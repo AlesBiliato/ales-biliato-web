@@ -1,6 +1,9 @@
 import "./style.css";
 import "./proyecto.css";
 import { initReveal } from "./reveal";
+import { initTheme } from "./theme";
+
+initTheme();
 
 function getRequiredElement<T extends Element>(selector: string): T {
   const element = document.querySelector<T>(selector);
@@ -100,7 +103,7 @@ app.innerHTML = /* HTML */ `
       <p class="eyebrow">El proyecto</p>
 
       <div class="project-two-columns">
-        <h2>Una web para centralizar toda la información del campus.</h2>
+        <h2>Una web para centralizar toda la información del campus</h2>
 
         <div class="project-copy">
           <p>
@@ -122,7 +125,7 @@ app.innerHTML = /* HTML */ `
       <p class="eyebrow">El objetivo</p>
 
       <div class="project-two-columns">
-        <h2>Convertir mucha información práctica en una experiencia clara.</h2>
+        <h2>Convertir mucha información práctica en una experiencia clara</h2>
 
         <div class="project-copy">
           <p>
@@ -142,7 +145,7 @@ app.innerHTML = /* HTML */ `
 
     <section class="section project-solution" data-animate>
       <p class="eyebrow">La solución</p>
-      <h2>Una estructura sencilla para acompañar todo el recorrido.</h2>
+      <h2>Una estructura sencilla para acompañar todo el recorrido</h2>
 
       <div class="project-feature-grid" data-stagger>
         <article class="project-feature" data-animate>
@@ -186,7 +189,7 @@ app.innerHTML = /* HTML */ `
     <section class="section project-showcase" data-animate>
       <div class="project-showcase-heading">
         <p class="eyebrow">Diseño de escritorio</p>
-        <h2>Una presentación visual con toda la información accesible.</h2>
+        <h2>Una presentación visual con toda la información accesible</h2>
       </div>
 
       <div class="desktop-mockup">
@@ -213,7 +216,7 @@ app.innerHTML = /* HTML */ `
       <div class="project-responsive-content">
         <p class="eyebrow">Diseño responsive</p>
 
-        <h2>Preparada para consultarse desde cualquier dispositivo.</h2>
+        <h2>Preparada para consultarse desde cualquier dispositivo</h2>
 
         <p>
           La navegación, los contenidos y las llamadas a la acción se adaptan
@@ -236,7 +239,7 @@ app.innerHTML = /* HTML */ `
       <p class="eyebrow">El resultado</p>
 
       <div class="project-two-columns">
-        <h2>Un punto de información único para participantes y familias.</h2>
+        <h2>Un punto de información único para participantes y familias</h2>
 
         <div class="project-copy">
           <p>

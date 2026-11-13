@@ -1,6 +1,9 @@
 import "./style.css";
 import "./proyecto.css";
 import { initReveal } from "./reveal";
+import { initTheme } from "./theme";
+
+initTheme();
 
 function getRequiredElement<T extends Element>(selector: string): T {
   const element = document.querySelector<T>(selector);
@@ -101,7 +104,7 @@ app.innerHTML = /* HTML */ `
       <p class="eyebrow">El proyecto</p>
 
       <div class="project-two-columns">
-        <h2>Una plataforma para consultar disponibilidad y reservar online.</h2>
+        <h2>Una plataforma para consultar disponibilidad y reservar online</h2>
 
         <div class="project-copy">
           <p>
@@ -124,7 +127,7 @@ app.innerHTML = /* HTML */ `
 
       <div class="project-two-columns">
         <h2>
-          Convertir la gestión de diferentes servicios en un proceso sencillo.
+          Convertir la gestión de diferentes servicios en un proceso sencillo
         </h2>
 
         <div class="project-copy">
@@ -146,7 +149,7 @@ app.innerHTML = /* HTML */ `
     <section class="section project-solution" data-animate>
       <p class="eyebrow">La solución</p>
 
-      <h2>Un recorrido guiado para reservar en pocos pasos.</h2>
+      <h2>Un recorrido guiado para reservar en pocos pasos</h2>
 
       <div class="project-feature-grid" data-stagger>
         <article class="project-feature" data-animate>
@@ -190,7 +193,7 @@ app.innerHTML = /* HTML */ `
     <section class="section project-showcase" data-animate>
       <div class="project-showcase-heading">
         <p class="eyebrow">Experiencia de escritorio</p>
-        <h2>Servicios, disponibilidad y reservas en una misma aplicación.</h2>
+        <h2>Servicios, disponibilidad y reservas en una misma aplicación</h2>
       </div>
 
       <div class="desktop-mockup">
@@ -219,7 +222,7 @@ app.innerHTML = /* HTML */ `
       <div class="project-responsive-content">
         <p class="eyebrow">Diseño responsive</p>
 
-        <h2>Preparada para reservar desde cualquier dispositivo.</h2>
+        <h2>Preparada para reservar desde cualquier dispositivo</h2>
 
         <p>
           La interfaz se adapta para que los usuarios puedan consultar los
@@ -242,7 +245,7 @@ app.innerHTML = /* HTML */ `
       <p class="eyebrow">El resultado</p>
 
       <div class="project-two-columns">
-        <h2>Una experiencia de reserva más directa para clientes y negocio.</h2>
+        <h2>Una experiencia de reserva más directa para clientes y negocio</h2>
 
         <div class="project-copy">
           <p>

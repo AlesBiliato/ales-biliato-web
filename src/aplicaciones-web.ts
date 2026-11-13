@@ -1,5 +1,8 @@
 import "./style.css";
 import "./paginas-web.css";
+import { initTheme } from "./theme";
+
+initTheme();
 
 function getRequiredElement<T extends Element>(selector: string): T {
   const element = document.querySelector<T>(selector);
@@ -43,7 +46,7 @@ app.innerHTML = /* HTML */ `
         <p class="eyebrow">Desarrollo de aplicaciones web</p>
 
         <h1>
-          Una aplicación a medida para simplificar la gestión de tu negocio.
+          Una aplicación a medida para simplificar la gestión de tu negocio
         </h1>
 
         <p class="service-hero-text">
@@ -76,7 +79,7 @@ app.innerHTML = /* HTML */ `
 
       <div class="service-introduction-grid">
         <h2>
-          La tecnología debe adaptarse a tu forma de trabajar, no al contrario.
+          La tecnología debe adaptarse a tu forma de trabajar, no al contrario
         </h2>
 
         <div>
@@ -99,7 +102,7 @@ app.innerHTML = /* HTML */ `
       <p class="eyebrow">Qué incluye</p>
 
       <h2>
-        Todo lo necesario para convertir una necesidad en una herramienta útil.
+        Todo lo necesario para convertir una necesidad en una herramienta útil
       </h2>
 
       <div class="service-feature-grid">
@@ -163,7 +166,7 @@ app.innerHTML = /* HTML */ `
       <p class="eyebrow">Para quién es</p>
 
       <h2>
-        Una solución para proyectos que necesitan algo más que una página web.
+        Una solución para proyectos que necesitan algo más que una página web
       </h2>
 
       <div class="service-audience-grid">
@@ -196,7 +199,7 @@ app.innerHTML = /* HTML */ `
     <section class="section service-examples">
       <p class="eyebrow">Ejemplos en funcionamiento</p>
 
-      <h2>Aplicaciones creadas para resolver necesidades concretas.</h2>
+      <h2>Aplicaciones creadas para resolver necesidades concretas</h2>
 
       <div class="service-example-list">
         <article class="service-example">
