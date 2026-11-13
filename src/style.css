@@ -93,21 +93,36 @@ h2 {
 ================================================== */
 
 .site-header {
-  position: relative;
+  position: sticky;
+  top: 0;
+  z-index: 100;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 0.75rem 5vw;
+  background: color-mix(in srgb, var(--color-background) 72%, transparent);
+  -webkit-backdrop-filter: blur(14px) saturate(1.4);
+  backdrop-filter: blur(14px) saturate(1.4);
 }
 
 .site-header::after {
   content: "";
   position: absolute;
   bottom: 0;
-  left: 5vw;
-  right: 5vw;
+  left: 0;
+  right: 0;
   height: 1px;
   background: var(--color-border);
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+
+.site-header.is-scrolled::after {
+  opacity: 1;
+}
+
+section[id] {
+  scroll-margin-top: 5rem;
 }
 
 .brand {
@@ -484,7 +499,6 @@ html.js-anim [data-animate].is-visible {
 
 @media (max-width: 700px) {
   .site-header {
-    position: relative;
     flex-direction: row;
     align-items: center;
     gap: 1rem;

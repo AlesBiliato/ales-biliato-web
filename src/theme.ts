@@ -9,6 +9,12 @@ export interface PageRays {
 export function initTheme(): PageRays {
   document.body.classList.add("theme-dark");
 
+  const siteHeader = document.querySelector(".site-header");
+  const updateHeaderState = () =>
+    siteHeader?.classList.toggle("is-scrolled", window.scrollY > 8);
+  updateHeaderState();
+  window.addEventListener("scroll", updateHeaderState, { passive: true });
+
   const element = document.createElement("div");
   element.className = "page-rays";
   element.setAttribute("aria-hidden", "true");
