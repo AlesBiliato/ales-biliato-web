@@ -1,5 +1,6 @@
 import "./style.css";
 import "./proyecto.css";
+import { initReveal } from "./reveal";
 
 function getRequiredElement<T extends Element>(selector: string): T {
   const element = document.querySelector<T>(selector);
@@ -41,11 +42,11 @@ app.innerHTML = /* HTML */ `
     <section class="project-hero">
       <div class="project-hero-grid">
         <div class="project-hero-content">
-          <p class="eyebrow">Web multipágina · Evento deportivo</p>
+          <p class="eyebrow" data-animate>Web multipágina · Evento deportivo</p>
 
-          <h1>Campus Camila Hiruela</h1>
+          <h1 data-animate style="--delay: 100ms">Campus Camila Hiruela</h1>
 
-          <p class="project-hero-text">
+          <p class="project-hero-text" data-animate style="--delay: 200ms">
             Diseño y desarrollo de una web para presentar un campus de vóley,
             reunir toda la información del evento y facilitar el acceso a la
             inscripción.
@@ -86,6 +87,8 @@ app.innerHTML = /* HTML */ `
 
       <img
         class="project-hero-image"
+        data-animate
+        style="--delay: 200ms"
         src="/imagenes/campus-camila-hiruela/mockup-portada-real.png"
         alt="Página web real del Campus Camila Hiruela mostrada en un ordenador portátil"
         width="1080"
@@ -93,7 +96,7 @@ app.innerHTML = /* HTML */ `
       />
     </section>
 
-    <section class="section project-overview">
+    <section class="section project-overview" data-animate>
       <p class="eyebrow">El proyecto</p>
 
       <div class="project-two-columns">
@@ -115,7 +118,7 @@ app.innerHTML = /* HTML */ `
       </div>
     </section>
 
-    <section class="section project-challenge">
+    <section class="section project-challenge" data-animate>
       <p class="eyebrow">El objetivo</p>
 
       <div class="project-two-columns">
@@ -137,12 +140,12 @@ app.innerHTML = /* HTML */ `
       </div>
     </section>
 
-    <section class="section project-solution">
+    <section class="section project-solution" data-animate>
       <p class="eyebrow">La solución</p>
       <h2>Una estructura sencilla para acompañar todo el recorrido.</h2>
 
-      <div class="project-feature-grid">
-        <article class="project-feature">
+      <div class="project-feature-grid" data-stagger>
+        <article class="project-feature" data-animate>
           <p class="project-feature-number">1</p>
           <h3>Presentación del campus</h3>
           <p>
@@ -151,7 +154,7 @@ app.innerHTML = /* HTML */ `
           </p>
         </article>
 
-        <article class="project-feature">
+        <article class="project-feature" data-animate>
           <p class="project-feature-number">2</p>
           <h3>Información organizada</h3>
           <p>
@@ -160,7 +163,7 @@ app.innerHTML = /* HTML */ `
           </p>
         </article>
 
-        <article class="project-feature">
+        <article class="project-feature" data-animate>
           <p class="project-feature-number">3</p>
           <h3>Acceso a la inscripción</h3>
           <p>
@@ -169,7 +172,7 @@ app.innerHTML = /* HTML */ `
           </p>
         </article>
 
-        <article class="project-feature">
+        <article class="project-feature" data-animate>
           <p class="project-feature-number">4</p>
           <h3>Galería del evento</h3>
           <p>
@@ -180,7 +183,7 @@ app.innerHTML = /* HTML */ `
       </div>
     </section>
 
-    <section class="section project-showcase">
+    <section class="section project-showcase" data-animate>
       <div class="project-showcase-heading">
         <p class="eyebrow">Diseño de escritorio</p>
         <h2>Una presentación visual con toda la información accesible.</h2>
@@ -205,6 +208,7 @@ app.innerHTML = /* HTML */ `
 
     <section
       class="section project-responsive project-responsive--device-group"
+      data-animate
     >
       <div class="project-responsive-content">
         <p class="eyebrow">Diseño responsive</p>
@@ -228,7 +232,7 @@ app.innerHTML = /* HTML */ `
       />
     </section>
 
-    <section class="section project-result">
+    <section class="section project-result" data-animate>
       <p class="eyebrow">El resultado</p>
 
       <div class="project-two-columns">
@@ -259,7 +263,7 @@ app.innerHTML = /* HTML */ `
       </div>
     </section>
 
-    <section class="section project-cta">
+    <section class="section project-cta" data-animate>
       <p class="eyebrow">Tu proyecto</p>
       <h2>¿Necesitas una web para presentar tu negocio o evento?</h2>
 
@@ -280,6 +284,8 @@ app.innerHTML = /* HTML */ `
     <a class="back-to-top" href="#proyecto-app" aria-label="Volver arriba">↑</a>
   </footer>
 `;
+
+initReveal();
 
 const menuToggle = getRequiredElement<HTMLButtonElement>(".menu-toggle");
 

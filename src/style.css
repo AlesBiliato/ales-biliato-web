@@ -380,12 +380,43 @@ h2 {
 }
 
 /* ==================================================
+   9b. ANIMACIONES DE ENTRADA (reveal)
+   Uso: añade data-animate a cualquier elemento.
+   Retardo opcional: style="--delay: 150ms"
+   En rejillas: data-stagger en el contenedor.
+   Solo se oculta si el JS ha puesto html.js-anim.
+================================================== */
+
+html.js-anim [data-animate] {
+  opacity: 0;
+  translate: 0 1rem;
+  transition:
+    opacity 0.7s ease-out var(--delay, 0ms),
+    translate 0.7s ease-out var(--delay, 0ms),
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+  will-change: opacity, translate;
+}
+
+html.js-anim [data-animate].is-visible {
+  opacity: 1;
+  translate: 0 0;
+  will-change: auto;
+}
+
+/* ==================================================
    10. ACCESIBILIDAD
 ================================================== */
 
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
+  }
+
+  html.js-anim [data-animate] {
+    opacity: 1;
+    translate: none;
+    transition: none;
   }
 
   .button {

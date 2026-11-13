@@ -1,5 +1,6 @@
 import "./style.css";
 import "./proyecto.css";
+import { initReveal } from "./reveal";
 
 function getRequiredElement<T extends Element>(selector: string): T {
   const element = document.querySelector<T>(selector);
@@ -41,11 +42,13 @@ app.innerHTML = /* HTML */ `
     <section class="project-hero">
       <div class="project-hero-grid">
         <div class="project-hero-content">
-          <p class="eyebrow">Aplicación web · Reservas deportivas</p>
+          <p class="eyebrow" data-animate>
+            Aplicación web · Reservas deportivas
+          </p>
 
-          <h1>Club Baldo’s</h1>
+          <h1 data-animate style="--delay: 100ms">Club Baldo’s</h1>
 
-          <p class="project-hero-text">
+          <p class="project-hero-text" data-animate style="--delay: 200ms">
             Diseño y desarrollo de una aplicación web responsive para consultar
             horarios disponibles y gestionar reservas deportivas online.
           </p>
@@ -85,6 +88,8 @@ app.innerHTML = /* HTML */ `
 
       <img
         class="project-hero-image"
+        data-animate
+        style="--delay: 200ms"
         src="/imagenes/club-baldos/portada-mockup.png"
         alt="Aplicación web de Club Baldo’s mostrada en ordenador y teléfono móvil"
         width="1586"
@@ -92,7 +97,7 @@ app.innerHTML = /* HTML */ `
       />
     </section>
 
-    <section class="section project-overview">
+    <section class="section project-overview" data-animate>
       <p class="eyebrow">El proyecto</p>
 
       <div class="project-two-columns">
@@ -114,7 +119,7 @@ app.innerHTML = /* HTML */ `
       </div>
     </section>
 
-    <section class="section project-challenge">
+    <section class="section project-challenge" data-animate>
       <p class="eyebrow">El objetivo</p>
 
       <div class="project-two-columns">
@@ -138,13 +143,13 @@ app.innerHTML = /* HTML */ `
       </div>
     </section>
 
-    <section class="section project-solution">
+    <section class="section project-solution" data-animate>
       <p class="eyebrow">La solución</p>
 
       <h2>Un recorrido guiado para reservar en pocos pasos.</h2>
 
-      <div class="project-feature-grid">
-        <article class="project-feature">
+      <div class="project-feature-grid" data-stagger>
+        <article class="project-feature" data-animate>
           <p class="project-feature-number">1</p>
           <h3>Elección del servicio</h3>
           <p>
@@ -153,7 +158,7 @@ app.innerHTML = /* HTML */ `
           </p>
         </article>
 
-        <article class="project-feature">
+        <article class="project-feature" data-animate>
           <p class="project-feature-number">2</p>
           <h3>Horarios disponibles</h3>
           <p>
@@ -162,7 +167,7 @@ app.innerHTML = /* HTML */ `
           </p>
         </article>
 
-        <article class="project-feature">
+        <article class="project-feature" data-animate>
           <p class="project-feature-number">3</p>
           <h3>Reserva personalizada</h3>
           <p>
@@ -171,7 +176,7 @@ app.innerHTML = /* HTML */ `
           </p>
         </article>
 
-        <article class="project-feature">
+        <article class="project-feature" data-animate>
           <p class="project-feature-number">4</p>
           <h3>Gestión de reservas</h3>
           <p>
@@ -182,7 +187,7 @@ app.innerHTML = /* HTML */ `
       </div>
     </section>
 
-    <section class="section project-showcase">
+    <section class="section project-showcase" data-animate>
       <div class="project-showcase-heading">
         <p class="eyebrow">Experiencia de escritorio</p>
         <h2>Servicios, disponibilidad y reservas en una misma aplicación.</h2>
@@ -209,6 +214,7 @@ app.innerHTML = /* HTML */ `
 
     <section
       class="section project-responsive project-responsive--device-group"
+      data-animate
     >
       <div class="project-responsive-content">
         <p class="eyebrow">Diseño responsive</p>
@@ -232,7 +238,7 @@ app.innerHTML = /* HTML */ `
       />
     </section>
 
-    <section class="section project-result">
+    <section class="section project-result" data-animate>
       <p class="eyebrow">El resultado</p>
 
       <div class="project-two-columns">
@@ -262,7 +268,7 @@ app.innerHTML = /* HTML */ `
       </div>
     </section>
 
-    <section class="section project-cta">
+    <section class="section project-cta" data-animate>
       <p class="eyebrow">Tu proyecto</p>
 
       <h2>¿Necesitas digitalizar las reservas de tu negocio?</h2>
@@ -284,6 +290,8 @@ app.innerHTML = /* HTML */ `
     <a class="back-to-top" href="#proyecto-app" aria-label="Volver arriba">↑</a>
   </footer>
 `;
+
+initReveal();
 
 const menuToggle = getRequiredElement<HTMLButtonElement>(".menu-toggle");
 
