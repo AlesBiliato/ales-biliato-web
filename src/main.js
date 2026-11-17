@@ -45,6 +45,8 @@ document.querySelector("#app").innerHTML = /* HTML */ `
       <div class="hero-ascii" aria-hidden="true"></div>
     </section>
 
+    <div class="section-line" data-animate aria-hidden="true"></div>
+
     <section id="proyectos" class="section projects-section" data-animate>
       <p class="eyebrow">Trabajos realizados</p>
       <h2>Proyectos web</h2>

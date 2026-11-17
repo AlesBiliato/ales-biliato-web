@@ -9,6 +9,8 @@
   --color-background: #f5f5f2;
   --color-surface: #fff;
 
+  --header-height: 6.5rem;
+  --header-height-small: 4.25rem;
   --font-size-h1: clamp(2rem, 3.5vw, 5.5rem);
 
   font-family: Inter, system-ui, sans-serif;
@@ -99,26 +101,69 @@ h2 {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0.75rem 5vw;
-  background: color-mix(in srgb, var(--color-background) 72%, transparent);
-  -webkit-backdrop-filter: blur(14px) saturate(1.4);
-  backdrop-filter: blur(14px) saturate(1.4);
+  height: var(--header-height);
+  padding: 0 5vw;
+  /* Aparece 0,5 s después de abrir la página */
+  animation: header-in 0.9s ease-out 0.5s both;
+  transition:
+    height 0.3s ease,
+    margin-bottom 0.3s ease;
 }
 
-.site-header::after {
+/* Al hacer scroll el header se reduce; el margin-bottom compensa la altura
+   perdida para que el contenido de debajo no salte. */
+.site-header.is-scrolled {
+  height: var(--header-height-small);
+  margin-bottom: calc(var(--header-height) - var(--header-height-small));
+}
+
+.site-header .brand,
+.site-header .nav-button {
+  transition:
+    width 0.3s ease,
+    font-size 0.3s ease,
+    padding 0.3s ease,
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.site-header.is-scrolled .brand {
+  width: clamp(150px, 13vw, 190px);
+}
+
+.site-header.is-scrolled .nav-button {
+  padding: 0.7rem 1.2rem;
+  font-size: 1rem;
+}
+
+.site-header::before {
   content: "";
   position: absolute;
-  bottom: 0;
-  left: 0;
+  top: 0;
   right: 0;
-  height: 1px;
-  background: var(--color-border);
-  opacity: 0;
-  transition: opacity 0.25s ease;
+  left: 0;
+  z-index: -1;
+  /* Más alto que el header: el desvanecido llega más abajo */
+  height: calc(100% + 4rem);
+  background: linear-gradient(
+    to bottom,
+    #000 0%,
+    rgb(0 0 0 / 90%) 45%,
+    rgb(0 0 0 / 0%) 100%
+  );
+  pointer-events: none;
 }
 
-.site-header.is-scrolled::after {
-  opacity: 1;
+@keyframes header-in {
+  from {
+    opacity: 0;
+    translate: 0 -0.75rem;
+  }
+
+  to {
+    opacity: 1;
+    translate: 0 0;
+  }
 }
 
 section[id] {
@@ -127,7 +172,7 @@ section[id] {
 
 .brand {
   display: block;
-  width: clamp(170px, 15vw, 210px);
+  width: clamp(230px, 20vw, 300px);
   flex-shrink: 0;
 }
 
@@ -136,13 +181,11 @@ section[id] {
   width: 100%;
   height: auto;
   margin-block: -9%;
-}
-
-/* Logo negro sobre blanco -> blanco sobre fondo oscuro */
-.theme-dark .brand img {
+  /* Logo negro -> blanco */
   filter: invert(1);
   mix-blend-mode: screen;
 }
+
 
 .main-nav {
   display: flex;
@@ -163,8 +206,9 @@ section[id] {
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: calc(100svh - 5rem);
-  padding: 3rem 5vw;
+  min-height: 100svh;
+  margin-top: calc(-1 * var(--header-height));
+  padding: calc(3rem + var(--header-height)) 5vw 3rem;
   overflow: hidden;
   text-align: center;
 }
@@ -262,6 +306,12 @@ section[id] {
   outline-offset: 4px;
 }
 
+.site-header .nav-button {
+  color: #fff;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
 .nav-button {
   display: inline-block;
   padding: 1rem 1.5rem;
@@ -284,7 +334,6 @@ section[id] {
 .section {
   min-height: 50vh;
   padding: 4rem 5vw;
-  border-top: 1px solid var(--color-border);
 }
 
 /* ==================================================
@@ -463,6 +512,25 @@ html.js-anim [data-animate].is-visible {
   will-change: auto;
 }
 
+/* Línea del primer salto de sección: se dibuja de izquierda a derecha */
+.section-line {
+  height: 1px;
+  margin-inline: 5vw;
+  background: color-mix(in srgb, var(--color-text) 35%, var(--color-border));
+}
+
+html.js-anim .section-line[data-animate] {
+  opacity: 1;
+  translate: none;
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+html.js-anim .section-line[data-animate].is-visible {
+  transform: scaleX(1);
+}
+
 /* ==================================================
    10. ACCESIBILIDAD
 ================================================== */
@@ -472,9 +540,15 @@ html.js-anim [data-animate].is-visible {
     scroll-behavior: auto;
   }
 
-  html.js-anim [data-animate] {
+  .site-header {
+    animation: none;
+  }
+
+  html.js-anim [data-animate],
+  html.js-anim .section-line[data-animate] {
     opacity: 1;
     translate: none;
+    transform: none;
     transition: none;
   }
 
@@ -507,17 +581,17 @@ html.js-anim [data-animate].is-visible {
   .menu-toggle {
     display: block;
     padding: 0.4rem 0.65rem;
-    border: 1px solid var(--color-text);
+    border: 1px solid #fff;
     border-radius: 0.5rem;
-    color: var(--color-text);
+    color: #fff;
     background: transparent;
-    font-size: 1.5rem;
+    font-size: 2rem;
     line-height: 1;
     cursor: pointer;
   }
 
   .hero {
-    padding: 1.5rem 1rem;
+    padding: calc(1.5rem + var(--header-height)) 1rem 1.5rem;
   }
 
   .about-grid {
@@ -542,12 +616,16 @@ html.js-anim [data-animate].is-visible {
     box-shadow: 0 8px 18px rgb(0 0 0 / 15%);
   }
 
+  .site-header .main-nav .nav-button {
+    color: var(--color-text);
+  }
+
   .main-nav.is-open {
     display: flex;
   }
 
   .brand {
-    width: min(60vw, 250px);
+    width: min(60vw, 260px);
   }
 }
 
@@ -712,7 +790,6 @@ html.js-anim [data-animate].is-visible {
   flex-wrap: wrap;
   gap: 1rem;
   padding: 2rem 5vw;
-  border-top: 1px solid var(--color-border);
   color: var(--color-muted);
   font-size: 0.9rem;
 }

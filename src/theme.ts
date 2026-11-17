@@ -10,6 +10,7 @@ export function initTheme(): PageRays {
   document.body.classList.add("theme-dark");
 
   const siteHeader = document.querySelector(".site-header");
+  // Al hacer scroll el header se reduce (clase is-scrolled).
   const updateHeaderState = () =>
     siteHeader?.classList.toggle("is-scrolled", window.scrollY > 8);
   updateHeaderState();
