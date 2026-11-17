@@ -30,7 +30,7 @@ document.querySelector("#app").innerHTML = /* HTML */ `
   <main>
     <section class="hero">
       <div class="hero-content">
-        <h1 data-animate>Páginas web claras, modernas y profesionales</h1>
+        <h1 data-animate>Tu negocio merece una web a su altura</h1>
         <p class="hero-text" data-animate style="--delay: 150ms">
           Diseño y desarrollo de páginas web para pequeñas empresas y
           profesionales que quieren mejorar su presencia digital
