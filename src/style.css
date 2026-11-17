@@ -9,6 +9,8 @@
   --color-background: #f5f5f2;
   --color-surface: #fff;
 
+  /* Margen lateral: 5vw, pero el contenido no pasa de 1500px de ancho */
+  --gutter: max(5vw, calc((100vw - 1500px) / 2));
   --font-size-h1: clamp(2rem, 3.5vw, 5.5rem);
 
   font-family: Inter, system-ui, sans-serif;
@@ -81,15 +83,15 @@ h2 {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1.5rem 5vw;
+  padding: 1.5rem var(--gutter);
 }
 
 .site-header::after {
   content: "";
   position: absolute;
   bottom: 0;
-  left: 5vw;
-  right: 5vw;
+  left: var(--gutter);
+  right: var(--gutter);
   height: 1px;
   background: var(--color-border);
 }
@@ -125,7 +127,7 @@ h2 {
   align-items: center;
   justify-content: center;
   min-height: calc(100svh - 16rem);
-  padding: 1rem 5vw;
+  padding: 1rem var(--gutter);
   text-align: center;
 }
 
@@ -319,7 +321,7 @@ h2 {
 
 .section {
   min-height: 50vh;
-  padding: 4rem 5vw;
+  padding: 4rem var(--gutter);
   border-top: 1px solid var(--color-border);
 }
 
@@ -783,8 +785,8 @@ html.js-anim .section-line[data-animate].is-visible {
     display: none;
     position: absolute;
     top: 100%;
-    right: 5vw;
-    left: 5vw;
+    right: var(--gutter);
+    left: var(--gutter);
     z-index: 10;
     flex-direction: column;
     align-items: center;
@@ -965,7 +967,7 @@ html.js-anim .section-line[data-animate].is-visible {
   align-items: center;
   flex-wrap: wrap;
   gap: 1rem;
-  padding: 2rem 5vw;
+  padding: 2rem var(--gutter);
   border-top: 1px solid var(--color-border);
   color: var(--color-muted);
   font-size: 0.9rem;
