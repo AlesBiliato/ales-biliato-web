@@ -503,8 +503,12 @@ html.js-anim [data-animate].is-visible {
 /* Línea del primer salto de sección: se dibuja de izquierda a derecha */
 .section-line {
   height: 1px;
-  margin-inline: 5vw;
-  background: color-mix(in srgb, var(--color-text) 35%, var(--color-border));
+  background: var(--color-border);
+}
+
+/* La línea animada ya hace de separador: se evita duplicarla con el borde */
+.section-line + .section {
+  border-top: 0;
 }
 
 html.js-anim .section-line[data-animate] {
