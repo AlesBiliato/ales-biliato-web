@@ -1,4 +1,4 @@
-// Tema oscuro común a todas las páginas + rayos de luz fijos de fondo.
+// Botones liquid glass + rayos de luz fijos de fondo (sol arriba a la derecha).
 import { createSideRays } from "./side-rays";
 
 export interface PageRays {
@@ -7,15 +7,6 @@ export interface PageRays {
 }
 
 export function initTheme(): PageRays {
-  document.body.classList.add("theme-dark");
-
-  const siteHeader = document.querySelector(".site-header");
-  // Al hacer scroll el header se reduce (clase is-scrolled).
-  const updateHeaderState = () =>
-    siteHeader?.classList.toggle("is-scrolled", window.scrollY > 8);
-  updateHeaderState();
-  window.addEventListener("scroll", updateHeaderState, { passive: true });
-
   // Liquid glass: la luz del botón sigue al cursor.
   document.addEventListener(
     "pointermove",
@@ -54,7 +45,7 @@ export function initTheme(): PageRays {
     dust: 0,
     mouseInfluence: 0.5,
     intro: true,
-    lightMode: false,
+    lightMode: true,
     opacity: 1,
     maxDevicePixelRatio: window.matchMedia("(max-width: 700px)").matches ? 1 : 2,
   });

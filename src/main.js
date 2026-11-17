@@ -1,8 +1,6 @@
 import "./style.css";
 import { initReveal } from "./reveal";
-import { initHeroAscii } from "./hero-ascii";
 import { initTheme } from "./theme";
-import { initRotatingText } from "./rotating-text";
 import proyectos from "virtual:proyectos";
 import { renderTarjeta } from "./proyectos-ui";
 
@@ -33,19 +31,14 @@ document.querySelector("#app").innerHTML = /* HTML */ `
   <main>
     <section class="hero">
       <div class="hero-content">
-        <h1 data-animate>
-          <span
-            class="rotating-text"
-            data-rotating-text='["Tu negocio", "Tu idea", "Tu proyecto"]'
-          >
-            <span class="rt-sr">Tu negocio</span>
-            <span class="rt-visual" aria-hidden="true">Tu negocio</span>
-          </span>
-          <span class="h1-rest">merece una web<br />a su altura</span>
-        </h1>
+        <a class="hero-badge" href="#contacto" data-animate>
+          <span class="hero-badge-dot" aria-hidden="true"></span>
+          Disponible para nuevos proyectos
+        </a>
+        <h1 data-animate>Páginas web claras, modernas y profesionales.</h1>
         <p class="hero-text" data-animate style="--delay: 150ms">
           Diseño y desarrollo de páginas web para pequeñas empresas y
-          profesionales que quieren mejorar su presencia digital
+          profesionales que quieren mejorar su presencia digital.
         </p>
 
         <div class="hero-actions" data-animate style="--delay: 300ms">
@@ -53,8 +46,6 @@ document.querySelector("#app").innerHTML = /* HTML */ `
           <a class="button button-secondary" href="#contacto">Hablemos</a>
         </div>
       </div>
-
-      <div class="hero-ascii" aria-hidden="true"></div>
     </section>
 
     <div class="section-line" data-animate aria-hidden="true"></div>
@@ -121,7 +112,7 @@ document.querySelector("#app").innerHTML = /* HTML */ `
       <p class="eyebrow">Mi enfoque</p>
       <div class="about-grid">
         <div>
-          <h2>Diseño y desarrollo con atención al detalle</h2>
+          <h2>Diseño y desarrollo con atención al detalle.</h2>
         </div>
 
         <div class="about-content">
@@ -229,15 +220,11 @@ document.querySelector("#app").innerHTML = /* HTML */ `
 `;
 
 initReveal();
-document
-  .querySelectorAll("[data-rotating-text]")
-  .forEach((el) => initRotatingText(el));
 
 const menuToggle = document.querySelector(".menu-toggle");
 const mainNav = document.querySelector(".main-nav");
 
-const pageRays = initTheme();
-initHeroAscii(pageRays);
+initTheme();
 
 function closeMenu() {
   mainNav.classList.remove("is-open");

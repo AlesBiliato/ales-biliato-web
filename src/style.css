@@ -9,8 +9,6 @@
   --color-background: #f5f5f2;
   --color-surface: #fff;
 
-  --header-height: 6.5rem;
-  --header-height-small: 4.25rem;
   --font-size-h1: clamp(2rem, 3.5vw, 5.5rem);
 
   font-family: Inter, system-ui, sans-serif;
@@ -20,28 +18,12 @@
   text-rendering: optimizeLegibility;
 }
 
-/* Tema oscuro (solo la home añade body.theme-dark) */
-:root:has(body.theme-dark) {
-  --color-text: #f2f4fa;
-  --color-muted: #9aa3b8;
-  --color-border: #232a3d;
-  --color-background: #04060f;
-  --color-surface: #0c1020;
-}
-
 /* Rayos de luz fijos de fondo (se crean en theme.ts) */
 .page-rays {
   position: fixed;
   inset: 0;
   z-index: -1;
   pointer-events: none;
-}
-
-/* Títulos con borde negro en cada letra */
-.theme-dark h1,
-.theme-dark h2 {
-  -webkit-text-stroke: 0.07em #000;
-  paint-order: stroke fill;
 }
 
 html {
@@ -95,84 +77,26 @@ h2 {
 ================================================== */
 
 .site-header {
-  position: sticky;
-  top: 0;
-  z-index: 100;
+  position: relative;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: var(--header-height);
-  padding: 0 5vw;
-  /* Aparece 0,5 s después de abrir la página */
-  animation: header-in 0.9s ease-out 0.5s both;
-  transition:
-    height 0.3s ease,
-    margin-bottom 0.3s ease;
+  padding: 1.5rem 5vw;
 }
 
-/* Al hacer scroll el header se reduce; el margin-bottom compensa la altura
-   perdida para que el contenido de debajo no salte. */
-.site-header.is-scrolled {
-  height: var(--header-height-small);
-  margin-bottom: calc(var(--header-height) - var(--header-height-small));
-}
-
-.site-header .brand,
-.site-header .nav-button {
-  transition:
-    width 0.3s ease,
-    font-size 0.3s ease,
-    padding 0.3s ease,
-    transform 0.25s ease,
-    box-shadow 0.25s ease;
-}
-
-.site-header.is-scrolled .brand {
-  width: clamp(150px, 13vw, 190px);
-}
-
-.site-header.is-scrolled .nav-button {
-  padding: 0.7rem 1.2rem;
-  font-size: 1rem;
-}
-
-.site-header::before {
+.site-header::after {
   content: "";
   position: absolute;
-  top: 0;
-  right: 0;
-  left: 0;
-  z-index: -1;
-  /* Más alto que el header: el desvanecido llega más abajo */
-  height: calc(100% + 4rem);
-  background: linear-gradient(
-    to bottom,
-    #000 0%,
-    rgb(0 0 0 / 90%) 45%,
-    rgb(0 0 0 / 0%) 100%
-  );
-  pointer-events: none;
-}
-
-@keyframes header-in {
-  from {
-    opacity: 0;
-    translate: 0 -0.75rem;
-  }
-
-  to {
-    opacity: 1;
-    translate: 0 0;
-  }
-}
-
-section[id] {
-  scroll-margin-top: 5rem;
+  bottom: 0;
+  left: 5vw;
+  right: 5vw;
+  height: 1px;
+  background: var(--color-border);
 }
 
 .brand {
   display: block;
-  width: clamp(230px, 20vw, 300px);
+  width: clamp(260px, 25vw, 360px);
   flex-shrink: 0;
 }
 
@@ -180,12 +104,7 @@ section[id] {
   display: block;
   width: 100%;
   height: auto;
-  margin-block: -9%;
-  /* Logo negro -> blanco */
-  filter: invert(1);
-  mix-blend-mode: screen;
 }
-
 
 .main-nav {
   display: flex;
@@ -202,80 +121,73 @@ section[id] {
 ================================================== */
 
 .hero {
-  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 100svh;
-  margin-top: calc(-1 * var(--header-height));
-  padding: calc(3rem + var(--header-height)) 5vw 3rem;
-  overflow: hidden;
+  min-height: calc(100svh - 16rem);
+  padding: 1rem 5vw;
   text-align: center;
 }
 
-.hero-ascii {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  background: #04060f;
-  will-change: opacity, transform;
+.hero-content {
+  min-width: 0;
 }
 
-.hero-content {
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 1.5rem;
+  padding: 0.5rem 1rem;
+  color: var(--color-text);
+  font-size: 0.9rem;
+  font-weight: 500;
+  background: rgb(255 255 255 / 55%);
+  border: 1px solid rgb(255 255 255 / 85%);
+  border-radius: 999px;
+  -webkit-backdrop-filter: blur(12px) saturate(1.6);
+  backdrop-filter: blur(12px) saturate(1.6);
+  box-shadow: 0 6px 18px rgb(0 0 0 / 10%);
+}
+
+.hero-badge-dot {
   position: relative;
-  width: 100%;
-  z-index: 1;
-  min-width: 0;
-  will-change: opacity, transform;
+  width: 0.55rem;
+  height: 0.55rem;
+  border-radius: 50%;
+  background: #22c55e;
+}
+
+.hero-badge-dot::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: #22c55e;
+  animation: badge-pulse 1.8s ease-out infinite;
+}
+
+@keyframes badge-pulse {
+  from {
+    opacity: 0.7;
+    transform: scale(1);
+  }
+
+  to {
+    opacity: 0;
+    transform: scale(3);
+  }
 }
 
 .hero h1 {
-  max-width: 1200px;
-  font-size: clamp(2.2rem, 5vw, 6rem);
+  max-width: 1000px;
   margin-right: auto;
   margin-left: auto;
-  font-family: "Playfair Display", Georgia, serif;
-  font-weight: 600;
-  line-height: 1.15;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  -webkit-text-stroke: 5px #000;
-  paint-order: stroke fill;
-}
-
-/* Texto rotativo del h1: primera línea cambia, "merece una web..." queda debajo */
-.rotating-text {
-  display: block;
-}
-
-.rt-sr {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
-  clip-path: inset(50%);
-  white-space: nowrap;
-}
-
-.h1-rest {
-  display: block;
-}
-
-/* Cada palabra recorta el slide; el padding evita cortar el contorno del texto */
-.rt-word {
-  display: inline-flex;
-  padding: 0.15em 0.08em;
-  margin: -0.15em -0.08em;
-  overflow: hidden;
-}
-
-.rt-char {
-  display: inline-block;
-  white-space: pre;
+  font-size: clamp(2.5rem, 6vw, 6rem);
 }
 
 .hero-text {
-  max-width: 560px;
+  max-width: 600px;
   margin-right: auto;
   margin-left: auto;
   color: var(--color-muted);
@@ -285,8 +197,8 @@ section[id] {
 
 .hero-actions {
   display: flex;
-  justify-content: center;
   flex-wrap: wrap;
+  justify-content: center;
   gap: 1rem;
   margin-top: 2rem;
 }
@@ -295,10 +207,8 @@ section[id] {
    5. BOTONES
 ================================================== */
 
-/* Liquid glass: cristal translúcido con desenfoque, brillo especular y una luz
-   que sigue al cursor (--mx / --my los actualiza theme.ts). */
 .button {
-  --glass: rgb(255 255 255 / 9%);
+  --glass: rgb(255 255 255 / 38%);
   --mx: 50%;
   --my: 0%;
   position: relative;
@@ -306,18 +216,18 @@ section[id] {
   padding: 0.9rem 1.5rem;
   overflow: hidden;
   isolation: isolate;
-  color: #fff;
+  color: var(--color-text);
   font-weight: 500;
   background: var(--glass);
-  border: 1px solid rgb(255 255 255 / 28%);
+  border: 1px solid rgb(255 255 255 / 80%);
   border-radius: 999px;
   -webkit-backdrop-filter: blur(14px) saturate(1.8);
   backdrop-filter: blur(14px) saturate(1.8);
   box-shadow:
-    inset 0 1px 0 rgb(255 255 255 / 55%),
-    inset 0 -10px 18px rgb(255 255 255 / 6%),
-    inset 0 0 0 1px rgb(255 255 255 / 6%),
-    0 8px 22px rgb(0 0 0 / 28%);
+    inset 0 1px 0 rgb(255 255 255 / 90%),
+    inset 0 -10px 18px rgb(255 255 255 / 25%),
+    inset 0 0 0 1px rgb(0 0 0 / 6%),
+    0 8px 22px rgb(0 0 0 / 14%);
   transition:
     transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1),
     background-color 0.3s ease,
@@ -334,8 +244,8 @@ section[id] {
   border-radius: 999px;
   background: linear-gradient(
     to bottom,
-    rgb(255 255 255 / 38%),
-    rgb(255 255 255 / 4%)
+    rgb(255 255 255 / 70%),
+    rgb(255 255 255 / 6%)
   );
   pointer-events: none;
 }
@@ -348,7 +258,7 @@ section[id] {
   z-index: -1;
   background: radial-gradient(
     circle 5rem at var(--mx) var(--my),
-    rgb(255 255 255 / 45%),
+    rgb(255 255 255 / 85%),
     rgb(255 255 255 / 0%) 70%
   );
   opacity: 0;
@@ -359,13 +269,13 @@ section[id] {
 .button:hover,
 .button:focus-visible {
   transform: translateY(-2px) scale(1.05);
-  border-color: rgb(255 255 255 / 55%);
+  border-color: #fff;
   box-shadow:
-    inset 0 1px 0 rgb(255 255 255 / 75%),
-    inset 0 -10px 20px rgb(255 255 255 / 10%),
-    inset 0 0 0 1px rgb(255 255 255 / 10%),
-    0 14px 30px rgb(0 0 0 / 35%),
-    0 0 26px rgb(120 170 255 / 28%);
+    inset 0 1px 0 #fff,
+    inset 0 -10px 20px rgb(255 255 255 / 35%),
+    inset 0 0 0 1px rgb(0 0 0 / 8%),
+    0 14px 30px rgb(0 0 0 / 20%),
+    0 0 26px rgb(120 170 255 / 30%);
 }
 
 .button:hover::after,
@@ -379,19 +289,13 @@ section[id] {
 
 /* Primario: cristal más denso y con tinte azulado */
 .button-primary {
-  --glass: rgb(150 190 255 / 26%);
-  border-color: rgb(190 215 255 / 50%);
+  --glass: rgb(110 160 255 / 30%);
+  color: #0f2457;
 }
 
 .button:focus-visible {
   outline: 3px solid #6aa9ff;
   outline-offset: 4px;
-}
-
-.site-header .nav-button {
-  color: #fff;
-  font-size: 1.2rem;
-  font-weight: 600;
 }
 
 .nav-button {
@@ -416,6 +320,7 @@ section[id] {
 .section {
   min-height: 50vh;
   padding: 4rem 5vw;
+  border-top: 1px solid var(--color-border);
 }
 
 /* ==================================================
@@ -798,10 +703,6 @@ html.js-anim .section-line[data-animate].is-visible {
     scroll-behavior: auto;
   }
 
-  .site-header {
-    animation: none;
-  }
-
   html.js-anim [data-animate],
   html.js-anim .section-line[data-animate] {
     opacity: 1;
@@ -813,6 +714,10 @@ html.js-anim .section-line[data-animate].is-visible {
   .button,
   .button::after {
     transition: none;
+  }
+
+  .hero-badge-dot::after {
+    animation: none;
   }
 
   .button:hover,
@@ -852,17 +757,17 @@ html.js-anim .section-line[data-animate].is-visible {
   .menu-toggle {
     display: block;
     padding: 0.4rem 0.65rem;
-    border: 1px solid #fff;
+    border: 1px solid var(--color-text);
     border-radius: 0.5rem;
-    color: #fff;
+    color: var(--color-text);
     background: transparent;
-    font-size: 2rem;
+    font-size: 1.5rem;
     line-height: 1;
     cursor: pointer;
   }
 
   .hero {
-    padding: calc(1.5rem + var(--header-height)) 1rem 1.5rem;
+    padding: 1.5rem 1rem;
   }
 
   .about-grid {
@@ -887,16 +792,12 @@ html.js-anim .section-line[data-animate].is-visible {
     box-shadow: 0 8px 18px rgb(0 0 0 / 15%);
   }
 
-  .site-header .main-nav .nav-button {
-    color: var(--color-text);
-  }
-
   .main-nav.is-open {
     display: flex;
   }
 
   .brand {
-    width: min(60vw, 260px);
+    width: min(60vw, 250px);
   }
 }
 
@@ -1061,6 +962,7 @@ html.js-anim .section-line[data-animate].is-visible {
   flex-wrap: wrap;
   gap: 1rem;
   padding: 2rem 5vw;
+  border-top: 1px solid var(--color-border);
   color: var(--color-muted);
   font-size: 0.9rem;
 }
