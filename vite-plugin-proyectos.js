@@ -14,7 +14,7 @@
 import { existsSync, readdirSync, readFileSync } from "node:fs";
 import { basename, join, resolve } from "node:path";
 
-const SITE_URL = "https://ales-biliato.netlify.app";
+const SITE_URL = "https://alesbiliato.com";
 const VIRTUAL_ID = "virtual:proyectos";
 const RESOLVED_VIRTUAL_ID = "\0" + VIRTUAL_ID;
 const EXTENSIONES = [".webp", ".png", ".jpg", ".jpeg"];
