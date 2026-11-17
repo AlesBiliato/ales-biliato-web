@@ -1,0 +1,101 @@
+{
+  "orden": 1,
+  "nombre": "Trassos",
+  "tipo": "Web multipágina",
+  "categoria": "Corian® a medida",
+  "tarjeta": "Web para una empresa de Gran Canaria especializada en Corian®: presenta el material, sus proyectos por sector y facilita pedir información.",
+  "resumen": "Diseño y desarrollo de la web de Trassos, empresa canaria especializada en Corian®, para explicar el material, mostrar sus trabajos y facilitar el contacto.",
+  "url": "https://trassos.es/",
+  "botonVisitar": "Visitar la web",
+  "detalles": [
+    {
+      "etiqueta": "Servicio",
+      "valor": "Diseño y desarrollo web"
+    },
+    {
+      "etiqueta": "Tipo de proyecto",
+      "valor": "Web multipágina"
+    },
+    {
+      "etiqueta": "Sector",
+      "valor": "Fabricación e instalación a medida"
+    },
+    {
+      "etiqueta": "Ubicación",
+      "valor": "Gran Canaria, España"
+    }
+  ],
+  "proyecto": {
+    "titulo": "Una web para dar a conocer el Corian® y los proyectos de Trassos",
+    "parrafos": [
+      "Trassos es una empresa con base en Gran Canaria que lleva 35 años transformando Corian® en piezas a medida para viviendas, comercios, hoteles, espacios sanitarios y fachadas.",
+      "Necesitaba una web que explicara qué es el material, enseñara trabajos reales por sector y dejara claro cómo trabaja la empresa, desde el diseño hasta la instalación."
+    ]
+  },
+  "objetivo": {
+    "titulo": "Explicar un material técnico de forma clara y visual",
+    "parrafos": [
+      "Corian® y Solid Surface son conceptos que no todo el mundo conoce. La web debía resolver esas dudas sin resultar técnica ni abrumadora.",
+      "El reto consistió en combinar contenido informativo con imágenes de proyectos reales, y guiar al visitante hasta solicitar información."
+    ]
+  },
+  "solucion": {
+    "titulo": "Una estructura que va de la idea al contacto",
+    "pasos": [
+      {
+        "titulo": "Portada con galería visual",
+        "texto": "Un mensaje directo y una galería circular de proyectos reales muestran desde el primer momento lo que Trassos es capaz de fabricar."
+      },
+      {
+        "titulo": "Explicación del material",
+        "texto": "Una sección propia aclara qué son Solid Surface y Corian®, y qué permiten crear."
+      },
+      {
+        "titulo": "Proyectos por sector",
+        "texto": "Residencial, comercial, hotelero, sanitario y fachadas ventiladas, cada uno con su descripción y sus trabajos."
+      },
+      {
+        "titulo": "Confianza y contacto",
+        "texto": "La experiencia, la acreditación Quality Network y el servicio integral preceden a un formulario sencillo para pedir información."
+      }
+    ]
+  },
+  "escritorio": {
+    "eyebrow": "Experiencia de escritorio",
+    "titulo": "Una portada que enseña los proyectos antes de explicarlos"
+  },
+  "responsive": {
+    "eyebrow": "Diseño responsive",
+    "titulo": "Pensada para consultarse desde cualquier dispositivo",
+    "texto": "El contenido se reorganiza en una sola columna y la galería se adapta para que los proyectos se vean bien también en pantallas pequeñas.",
+    "grupoDispositivos": true
+  },
+  "resultado": {
+    "titulo": "Un escaparate digital para un oficio muy visual",
+    "parrafos": [
+      "La web reúne el material, los sectores, la empresa y el contacto en una experiencia clara, con las imágenes de los proyectos como protagonistas.",
+      "Trassos dispone así de un canal propio donde presentar su trabajo y recibir consultas de clientes particulares y profesionales."
+    ],
+    "botonVisitar": "Ver el proyecto publicado"
+  },
+  "cta": {
+    "titulo": "¿Quieres una web que enseñe tu trabajo?",
+    "texto": "Cuéntame a qué te dedicas y estudiaremos cómo presentar tus proyectos y facilitar que te contacten."
+  },
+  "seo": {
+    "titulo": "Trassos | Web de Corian® en Canarias | Proyecto de Ales Biliato",
+    "descripcion": "Caso de estudio del diseño y desarrollo de la web de Trassos, empresa de Gran Canaria especializada en Corian® a medida.",
+    "descripcionSocial": "Diseño y desarrollo de la web de Trassos: Corian® a medida en Canarias, con proyectos por sector y contacto directo."
+  },
+  "imagenes": {
+    "escritorio": "captura-desktop.webp",
+    "movil": "captura-mobile.png",
+    "alt": {
+      "escritorio": "Portada de la web de Trassos en ordenador",
+      "movil": "Web de Trassos en un teléfono móvil",
+      "tarjeta": "Web de Trassos, Corian® a medida en Canarias",
+      "tablet": "Web de Trassos en una tablet en horizontal"
+    }
+  },
+  "colorPantalla": "#f7f7f7"
+}

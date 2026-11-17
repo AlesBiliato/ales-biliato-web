@@ -1,5 +1,9 @@
 import "./style.css";
 import "./paginas-web.css";
+import { initReveal } from "./reveal";
+import { initTheme } from "./theme";
+
+initTheme();
 
 function getRequiredElement<T extends Element>(selector: string): T {
   const element = document.querySelector<T>(selector);
@@ -40,19 +44,19 @@ app.innerHTML = /* HTML */ `
   <main>
     <section class="service-hero">
       <div class="service-hero-content">
-        <p class="eyebrow">Diseño y desarrollo web</p>
+        <p class="eyebrow" data-animate>Diseño y desarrollo web</p>
 
-        <h1>
-          Una página web profesional para presentar tu negocio con claridad.
+        <h1 data-animate style="--delay: 100ms">
+          Una página web profesional para presentar tu negocio con claridad
         </h1>
 
-        <p class="service-hero-text">
+        <p class="service-hero-text" data-animate style="--delay: 200ms">
           Diseño y desarrollo de páginas web para pequeñas empresas y
           profesionales que necesitan explicar lo que hacen, transmitir
           confianza y facilitar que nuevos clientes contacten con ellos.
         </p>
 
-        <div class="hero-actions">
+        <div class="hero-actions" data-animate style="--delay: 300ms">
           <a class="button button-primary" href="/#contacto">
             Cuéntame tu proyecto
           </a>
@@ -63,7 +67,7 @@ app.innerHTML = /* HTML */ `
         </div>
       </div>
 
-      <div class="service-hero-visual">
+      <div class="service-hero-visual" data-animate style="--delay: 200ms">
         <img
           src="/imagenes/servicios/servicio-paginas-web.png"
           alt="Página web adaptada a ordenador y teléfono móvil"
@@ -71,13 +75,13 @@ app.innerHTML = /* HTML */ `
       </div>
     </section>
 
-    <section class="section service-introduction">
+    <section class="section service-introduction" data-animate>
       <p class="eyebrow">Una herramienta para tu negocio</p>
 
       <div class="service-introduction-grid">
         <h2>
           Tu web debe ayudar a entender quién eres, qué ofreces y cómo
-          contactar.
+          contactar
         </h2>
 
         <div>
@@ -96,12 +100,12 @@ app.innerHTML = /* HTML */ `
       </div>
     </section>
 
-    <section id="que-incluye" class="section service-includes">
+    <section id="que-incluye" class="section service-includes" data-animate>
       <p class="eyebrow">Qué incluye</p>
-      <h2>Todo lo necesario para publicar una web profesional.</h2>
+      <h2>Todo lo necesario para publicar una web profesional</h2>
 
-      <div class="service-feature-grid">
-        <article class="service-feature">
+      <div class="service-feature-grid" data-stagger>
+        <article class="service-feature" data-animate>
           <p class="service-feature-number">1</p>
           <h3>Estructura y contenidos</h3>
           <p>
@@ -110,7 +114,7 @@ app.innerHTML = /* HTML */ `
           </p>
         </article>
 
-        <article class="service-feature">
+        <article class="service-feature" data-animate>
           <p class="service-feature-number">2</p>
           <h3>Diseño adaptado al negocio</h3>
           <p>
@@ -119,7 +123,7 @@ app.innerHTML = /* HTML */ `
           </p>
         </article>
 
-        <article class="service-feature">
+        <article class="service-feature" data-animate>
           <p class="service-feature-number">3</p>
           <h3>Adaptación a móviles</h3>
           <p>
@@ -129,7 +133,7 @@ app.innerHTML = /* HTML */ `
           </p>
         </article>
 
-        <article class="service-feature">
+        <article class="service-feature" data-animate>
           <p class="service-feature-number">4</p>
           <h3>Desarrollo y rendimiento</h3>
           <p>
@@ -138,7 +142,7 @@ app.innerHTML = /* HTML */ `
           </p>
         </article>
 
-        <article class="service-feature">
+        <article class="service-feature" data-animate>
           <p class="service-feature-number">5</p>
           <h3>Formulario de contacto</h3>
           <p>
@@ -147,7 +151,7 @@ app.innerHTML = /* HTML */ `
           </p>
         </article>
 
-        <article class="service-feature">
+        <article class="service-feature" data-animate>
           <p class="service-feature-number">6</p>
           <h3>Base técnica para Google</h3>
           <p>
@@ -158,12 +162,12 @@ app.innerHTML = /* HTML */ `
       </div>
     </section>
 
-    <section class="section service-audience">
+    <section class="section service-audience" data-animate>
       <p class="eyebrow">Para quién es</p>
-      <h2>Una solución pensada para negocios que necesitan avanzar.</h2>
+      <h2>Una solución pensada para negocios que necesitan avanzar</h2>
 
-      <div class="service-audience-grid">
-        <article>
+      <div class="service-audience-grid" data-stagger>
+        <article data-animate>
           <h3>Empresas sin página web</h3>
           <p>
             Para negocios que necesitan empezar a tener una presencia digital
@@ -171,7 +175,7 @@ app.innerHTML = /* HTML */ `
           </p>
         </article>
 
-        <article>
+        <article data-animate>
           <h3>Profesionales independientes</h3>
           <p>
             Para quienes necesitan presentar su experiencia, mostrar su trabajo
@@ -179,7 +183,7 @@ app.innerHTML = /* HTML */ `
           </p>
         </article>
 
-        <article>
+        <article data-animate>
           <h3>Webs que se han quedado atrás</h3>
           <p>
             Para proyectos con una web antigua, poco clara o difícil de utilizar
@@ -189,7 +193,7 @@ app.innerHTML = /* HTML */ `
       </div>
     </section>
 
-    <section class="section service-project">
+    <section class="section service-project" data-animate>
       <div class="service-project-content">
         <p class="eyebrow">Proyecto relacionado</p>
         <h2>Campus Camila Hiruela</h2>
@@ -219,7 +223,7 @@ app.innerHTML = /* HTML */ `
       />
     </section>
 
-    <section class="section service-cta">
+    <section class="section service-cta" data-animate>
       <p class="eyebrow">Hablemos</p>
       <h2>¿Necesitas una página web para tu negocio?</h2>
 
@@ -240,6 +244,8 @@ app.innerHTML = /* HTML */ `
     <a class="back-to-top" href="#servicio-app" aria-label="Volver arriba">↑</a>
   </footer>
 `;
+
+initReveal();
 
 const menuToggle = getRequiredElement<HTMLButtonElement>(".menu-toggle");
 

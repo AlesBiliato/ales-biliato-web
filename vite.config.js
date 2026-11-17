@@ -1,7 +1,11 @@
 import { defineConfig } from "vite";
 import { resolve } from "node:path";
+import proyectos from "./vite-plugin-proyectos.js";
 
+// Las páginas de /proyectos/<slug>/ y el sitemap los genera el plugin a partir
+// de src/data/proyectos/*.json: no hace falta registrarlas aquí.
 export default defineConfig({
+  plugins: [proyectos()],
   build: {
     rollupOptions: {
       input: {
@@ -11,18 +15,6 @@ export default defineConfig({
         aplicacionesWeb: resolve(
           import.meta.dirname,
           "aplicaciones-web/index.html",
-        ),
-        campusCamilaHiruela: resolve(
-          import.meta.dirname,
-          "proyectos/campus-camila-hiruela/index.html",
-        ),
-        clubBaldos: resolve(
-          import.meta.dirname,
-          "proyectos/club-baldos/index.html",
-        ),
-        volleyStats: resolve(
-          import.meta.dirname,
-          "proyectos/volleystats/index.html",
         ),
       },
     },

@@ -1,5 +1,9 @@
 import "./style.css";
 import "./paginas-web.css";
+import { initReveal } from "./reveal";
+import { initTheme } from "./theme";
+
+initTheme();
 
 function getRequiredElement<T extends Element>(selector: string): T {
   const element = document.querySelector<T>(selector);
@@ -40,19 +44,19 @@ app.innerHTML = /* HTML */ `
   <main>
     <section class="service-hero">
       <div class="service-hero-content">
-        <p class="eyebrow">Desarrollo de aplicaciones web</p>
+        <p class="eyebrow" data-animate>Desarrollo de aplicaciones web</p>
 
-        <h1>
-          Una aplicación a medida para simplificar la gestión de tu negocio.
+        <h1 data-animate style="--delay: 100ms">
+          Una aplicación a medida para simplificar la gestión de tu negocio
         </h1>
 
-        <p class="service-hero-text">
+        <p class="service-hero-text" data-animate style="--delay: 200ms">
           Diseño y desarrollo herramientas web para gestionar reservas,
           organizar datos y facilitar procesos que actualmente requieren
           demasiado tiempo o trabajo manual.
         </p>
 
-        <div class="hero-actions">
+        <div class="hero-actions" data-animate style="--delay: 300ms">
           <a class="button button-primary" href="/#contacto">
             Cuéntame tu proyecto
           </a>
@@ -63,7 +67,7 @@ app.innerHTML = /* HTML */ `
         </div>
       </div>
 
-      <div class="service-hero-visual">
+      <div class="service-hero-visual" data-animate style="--delay: 200ms">
         <img
           src="/imagenes/servicios/servicio-aplicaciones-web.png"
           alt="Panel de una aplicación web con datos, gráficos y controles"
@@ -71,12 +75,12 @@ app.innerHTML = /* HTML */ `
       </div>
     </section>
 
-    <section class="section service-introduction">
+    <section class="section service-introduction" data-animate>
       <p class="eyebrow">Una herramienta para tu negocio</p>
 
       <div class="service-introduction-grid">
         <h2>
-          La tecnología debe adaptarse a tu forma de trabajar, no al contrario.
+          La tecnología debe adaptarse a tu forma de trabajar, no al contrario
         </h2>
 
         <div>
@@ -95,15 +99,15 @@ app.innerHTML = /* HTML */ `
       </div>
     </section>
 
-    <section id="que-incluye" class="section service-includes">
+    <section id="que-incluye" class="section service-includes" data-animate>
       <p class="eyebrow">Qué incluye</p>
 
       <h2>
-        Todo lo necesario para convertir una necesidad en una herramienta útil.
+        Todo lo necesario para convertir una necesidad en una herramienta útil
       </h2>
 
-      <div class="service-feature-grid">
-        <article class="service-feature">
+      <div class="service-feature-grid" data-stagger>
+        <article class="service-feature" data-animate>
           <p class="service-feature-number">1</p>
           <h3>Análisis del proceso</h3>
           <p>
@@ -112,7 +116,7 @@ app.innerHTML = /* HTML */ `
           </p>
         </article>
 
-        <article class="service-feature">
+        <article class="service-feature" data-animate>
           <p class="service-feature-number">2</p>
           <h3>Estructura y experiencia</h3>
           <p>
@@ -121,7 +125,7 @@ app.innerHTML = /* HTML */ `
           </p>
         </article>
 
-        <article class="service-feature">
+        <article class="service-feature" data-animate>
           <p class="service-feature-number">3</p>
           <h3>Diseño de la interfaz</h3>
           <p>
@@ -130,7 +134,7 @@ app.innerHTML = /* HTML */ `
           </p>
         </article>
 
-        <article class="service-feature">
+        <article class="service-feature" data-animate>
           <p class="service-feature-number">4</p>
           <h3>Funcionalidades a medida</h3>
           <p>
@@ -139,7 +143,7 @@ app.innerHTML = /* HTML */ `
           </p>
         </article>
 
-        <article class="service-feature">
+        <article class="service-feature" data-animate>
           <p class="service-feature-number">5</p>
           <h3>Adaptación por dispositivo</h3>
           <p>
@@ -148,7 +152,7 @@ app.innerHTML = /* HTML */ `
           </p>
         </article>
 
-        <article class="service-feature">
+        <article class="service-feature" data-animate>
           <p class="service-feature-number">6</p>
           <h3>Pruebas y publicación</h3>
           <p>
@@ -159,15 +163,15 @@ app.innerHTML = /* HTML */ `
       </div>
     </section>
 
-    <section class="section service-audience">
+    <section class="section service-audience" data-animate>
       <p class="eyebrow">Para quién es</p>
 
       <h2>
-        Una solución para proyectos que necesitan algo más que una página web.
+        Una solución para proyectos que necesitan algo más que una página web
       </h2>
 
-      <div class="service-audience-grid">
-        <article>
+      <div class="service-audience-grid" data-stagger>
+        <article data-animate>
           <h3>Negocios con procesos manuales</h3>
           <p>
             Para empresas que todavía organizan información mediante mensajes,
@@ -175,7 +179,7 @@ app.innerHTML = /* HTML */ `
           </p>
         </article>
 
-        <article>
+        <article data-animate>
           <h3>Servicios con reservas</h3>
           <p>
             Para negocios que necesitan mostrar disponibilidad, recibir
@@ -183,7 +187,7 @@ app.innerHTML = /* HTML */ `
           </p>
         </article>
 
-        <article>
+        <article data-animate>
           <h3>Proyectos que trabajan con datos</h3>
           <p>
             Para equipos que necesitan registrar información, consultarla con
@@ -193,10 +197,10 @@ app.innerHTML = /* HTML */ `
       </div>
     </section>
 
-    <section class="section service-examples">
+    <section class="section service-examples" data-animate>
       <p class="eyebrow">Ejemplos en funcionamiento</p>
 
-      <h2>Aplicaciones creadas para resolver necesidades concretas.</h2>
+      <h2>Aplicaciones creadas para resolver necesidades concretas</h2>
 
       <div class="service-example-list">
         <article class="service-example">
@@ -257,7 +261,7 @@ app.innerHTML = /* HTML */ `
       </div>
     </section>
 
-    <section class="section service-cta">
+    <section class="section service-cta" data-animate>
       <p class="eyebrow">Hablemos</p>
 
       <h2>¿Necesitas una aplicación para simplificar tu trabajo?</h2>
@@ -284,6 +288,8 @@ app.innerHTML = /* HTML */ `
     <a class="back-to-top" href="#servicio-app" aria-label="Volver arriba">↑</a>
   </footer>
 `;
+
+initReveal();
 
 const menuToggle = getRequiredElement<HTMLButtonElement>(".menu-toggle");
 

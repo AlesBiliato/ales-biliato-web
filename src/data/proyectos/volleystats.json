@@ -1,0 +1,103 @@
+{
+  "orden": 4,
+  "nombre": "VolleyStats",
+  "tipo": "Aplicación web",
+  "categoria": "Estadísticas deportivas",
+  "tarjeta": "Aplicación para registrar partidos de vóley y consultar estadísticas por jugador, set y rotación, pensada para ordenador y tablet.",
+  "resumen": "Diseño y desarrollo de una aplicación web para registrar partidos de vóley y consultar estadísticas por jugador, set y rotación.",
+  "url": "https://volleystats-app.netlify.app/",
+  "botonVisitar": "Visitar la aplicación",
+  "detalles": [
+    {
+      "etiqueta": "Servicio",
+      "valor": "Diseño y desarrollo web"
+    },
+    {
+      "etiqueta": "Tipo de proyecto",
+      "valor": "Aplicación web"
+    },
+    {
+      "etiqueta": "Sector",
+      "valor": "Deporte y análisis"
+    },
+    {
+      "etiqueta": "Dispositivos",
+      "valor": "Ordenador y tablet"
+    }
+  ],
+  "proyecto": {
+    "titulo": "Una herramienta para registrar y analizar partidos de vóley",
+    "parrafos": [
+      "VolleyStats nace para reunir en una sola aplicación el registro de los partidos y la consulta posterior de las estadísticas del equipo.",
+      "La herramienta permite organizar la información deportiva y consultar el rendimiento desde diferentes niveles de detalle, como jugadores, sets y rotaciones."
+    ]
+  },
+  "objetivo": {
+    "titulo": "Registrar información durante el partido sin perder agilidad",
+    "parrafos": [
+      "Durante un encuentro, cada acción debe anotarse con rapidez. Una interfaz lenta o demasiado compleja dificultaría el registro y podría provocar errores en los datos.",
+      "El reto consistió en organizar muchas opciones y estadísticas dentro de una experiencia clara, preparada para utilizarse principalmente desde ordenador y tablet."
+    ]
+  },
+  "solucion": {
+    "titulo": "Una estructura diseñada para registrar y consultar cada partido",
+    "pasos": [
+      {
+        "titulo": "Gestión del equipo",
+        "texto": "La aplicación permite organizar los jugadores y disponer de la información necesaria antes de comenzar el partido."
+      },
+      {
+        "titulo": "Registro del partido",
+        "texto": "Las acciones se introducen mediante una interfaz preparada para trabajar con rapidez durante el encuentro."
+      },
+      {
+        "titulo": "Estadísticas detalladas",
+        "texto": "Los datos pueden consultarse por jugador y por set para analizar el rendimiento con mayor precisión."
+      },
+      {
+        "titulo": "Análisis de rotaciones",
+        "texto": "La información por rotación ayuda a identificar patrones y comprender mejor el desarrollo del partido."
+      }
+    ]
+  },
+  "escritorio": {
+    "eyebrow": "Experiencia de escritorio",
+    "titulo": "Una vista completa del partido y sus principales controles"
+  },
+  "responsive": {
+    "eyebrow": "Experiencia en tablet",
+    "titulo": "Diseñada para registrar el partido desde la pista",
+    "texto": "La interfaz aprovecha el espacio horizontal de la tablet para mostrar la rotación, el marcador y los controles principales sin perder claridad durante el encuentro.",
+    "grupoDispositivos": false
+  },
+  "resultado": {
+    "titulo": "Los datos del partido convertidos en información útil",
+    "parrafos": [
+      "VolleyStats reúne el registro del encuentro, la organización del equipo y la consulta de estadísticas dentro de una misma herramienta.",
+      "La información registrada durante el partido puede revisarse después para analizar el rendimiento de jugadores, sets y rotaciones."
+    ],
+    "botonVisitar": "Ver el proyecto publicado"
+  },
+  "cta": {
+    "titulo": "¿Necesitas una aplicación para gestionar datos o procesos?",
+    "texto": "Cuéntame cómo trabajas y estudiaremos una solución digital adaptada a las necesidades reales de tu proyecto."
+  },
+  "seo": {
+    "titulo": "VolleyStats | Aplicación de estadísticas de vóley | Proyecto de Ales Biliato",
+    "descripcion": "Caso de estudio del diseño y desarrollo de VolleyStats, una aplicación web para registrar partidos de vóley y consultar estadísticas por jugador, set y rotación.",
+    "descripcionSocial": "Diseño y desarrollo de una aplicación web para registrar partidos de vóley y analizar estadísticas deportivas."
+  },
+  "imagenes": {
+    "portada": false,
+    "responsive": false,
+    "escritorio": "captura-desktop-real.png",
+    "tablet": "portada-tablet-horizontal.png",
+    "alt": {
+      "portada": "Aplicación web VolleyStats mostrada en ordenador y tablet",
+      "tarjeta": "Aplicación web VolleyStats",
+      "escritorio": "Interfaz real de VolleyStats mostrada en ordenador",
+      "responsive": "Aplicación VolleyStats mostrada en una tablet horizontal",
+      "tablet": "VolleyStats en una tablet en horizontal"
+    }
+  }
+}

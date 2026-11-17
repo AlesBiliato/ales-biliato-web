@@ -9,6 +9,8 @@
   --color-background: #f5f5f2;
   --color-surface: #fff;
 
+  --header-height: 6.5rem;
+  --header-height-small: 4.25rem;
   --font-size-h1: clamp(2rem, 3.5vw, 5.5rem);
 
   font-family: Inter, system-ui, sans-serif;
@@ -16,6 +18,30 @@
   background: var(--color-background);
   font-synthesis: none;
   text-rendering: optimizeLegibility;
+}
+
+/* Tema oscuro (solo la home añade body.theme-dark) */
+:root:has(body.theme-dark) {
+  --color-text: #f2f4fa;
+  --color-muted: #9aa3b8;
+  --color-border: #232a3d;
+  --color-background: #04060f;
+  --color-surface: #0c1020;
+}
+
+/* Rayos de luz fijos de fondo (se crean en theme.ts) */
+.page-rays {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* Títulos con borde negro en cada letra */
+.theme-dark h1,
+.theme-dark h2 {
+  -webkit-text-stroke: 0.07em #000;
+  paint-order: stroke fill;
 }
 
 html {
@@ -69,26 +95,84 @@ h2 {
 ================================================== */
 
 .site-header {
-  position: relative;
+  position: sticky;
+  top: 0;
+  z-index: 100;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1.5rem 5vw;
+  height: var(--header-height);
+  padding: 0 5vw;
+  /* Aparece 0,5 s después de abrir la página */
+  animation: header-in 0.9s ease-out 0.5s both;
+  transition:
+    height 0.3s ease,
+    margin-bottom 0.3s ease;
 }
 
-.site-header::after {
+/* Al hacer scroll el header se reduce; el margin-bottom compensa la altura
+   perdida para que el contenido de debajo no salte. */
+.site-header.is-scrolled {
+  height: var(--header-height-small);
+  margin-bottom: calc(var(--header-height) - var(--header-height-small));
+}
+
+.site-header .brand,
+.site-header .nav-button {
+  transition:
+    width 0.3s ease,
+    font-size 0.3s ease,
+    padding 0.3s ease,
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.site-header.is-scrolled .brand {
+  width: clamp(150px, 13vw, 190px);
+}
+
+.site-header.is-scrolled .nav-button {
+  padding: 0.7rem 1.2rem;
+  font-size: 1rem;
+}
+
+.site-header::before {
   content: "";
   position: absolute;
-  bottom: 0;
-  left: 5vw;
-  right: 5vw;
-  height: 1px;
-  background: var(--color-border);
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: -1;
+  /* Más alto que el header: el desvanecido llega más abajo */
+  height: calc(100% + 4rem);
+  background: linear-gradient(
+    to bottom,
+    #000 0%,
+    rgb(0 0 0 / 90%) 45%,
+    rgb(0 0 0 / 0%) 100%
+  );
+  pointer-events: none;
+}
+
+@keyframes header-in {
+  from {
+    opacity: 0;
+    translate: 0 -0.75rem;
+  }
+
+  to {
+    opacity: 1;
+    translate: 0 0;
+  }
+}
+
+section[id] {
+  scroll-margin-top: 5rem;
 }
 
 .brand {
   display: block;
-  width: clamp(260px, 25vw, 360px);
+  width: clamp(230px, 20vw, 300px);
   flex-shrink: 0;
 }
 
@@ -96,7 +180,12 @@ h2 {
   display: block;
   width: 100%;
   height: auto;
+  margin-block: -9%;
+  /* Logo negro -> blanco */
+  filter: invert(1);
+  mix-blend-mode: screen;
 }
+
 
 .main-nav {
   display: flex;
@@ -113,34 +202,82 @@ h2 {
 ================================================== */
 
 .hero {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  position: relative;
+  display: flex;
   align-items: center;
-  gap: clamp(2rem, 5vw, 6rem);
-  padding: 4rem 5vw;
+  justify-content: center;
+  min-height: 100svh;
+  margin-top: calc(-1 * var(--header-height));
+  padding: calc(3rem + var(--header-height)) 5vw 3rem;
+  overflow: hidden;
+  text-align: center;
 }
 
-.hero-content,
-.hero-visual {
-  min-width: 0;
+.hero-ascii {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: #04060f;
+  will-change: opacity, transform;
 }
 
-.hero-visual video {
-  display: block;
+.hero-content {
+  position: relative;
   width: 100%;
-  height: auto;
-  aspect-ratio: 8 / 5;
-  border-radius: 1rem;
-  background: rgb(245 243 239);
-  object-fit: cover;
+  z-index: 1;
+  min-width: 0;
+  will-change: opacity, transform;
 }
 
-.hero-video.is-playback-blocked {
-  cursor: pointer;
+.hero h1 {
+  max-width: 1200px;
+  font-size: clamp(2.2rem, 5vw, 6rem);
+  margin-right: auto;
+  margin-left: auto;
+  font-family: "Playfair Display", Georgia, serif;
+  font-weight: 600;
+  line-height: 1.15;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  -webkit-text-stroke: 5px #000;
+  paint-order: stroke fill;
+}
+
+/* Texto rotativo del h1: primera línea cambia, "merece una web..." queda debajo */
+.rotating-text {
+  display: block;
+}
+
+.rt-sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.h1-rest {
+  display: block;
+}
+
+/* Cada palabra recorta el slide; el padding evita cortar el contorno del texto */
+.rt-word {
+  display: inline-flex;
+  padding: 0.15em 0.08em;
+  margin: -0.15em -0.08em;
+  overflow: hidden;
+}
+
+.rt-char {
+  display: inline-block;
+  white-space: pre;
 }
 
 .hero-text {
   max-width: 560px;
+  margin-right: auto;
+  margin-left: auto;
   color: var(--color-muted);
   font-size: 1.2rem;
   line-height: 1.6;
@@ -148,59 +285,113 @@ h2 {
 
 .hero-actions {
   display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
   gap: 1rem;
   margin-top: 2rem;
-}
-
-@media (max-width: 900px) {
-  .hero {
-    grid-template-columns: 1fr;
-  }
 }
 
 /* ==================================================
    5. BOTONES
 ================================================== */
 
+/* Liquid glass: cristal translúcido con desenfoque, brillo especular y una luz
+   que sigue al cursor (--mx / --my los actualiza theme.ts). */
 .button {
+  --glass: rgb(255 255 255 / 9%);
+  --mx: 50%;
+  --my: 0%;
+  position: relative;
   display: inline-block;
-  padding: 0.9rem 1.3rem;
-  border: 1px solid var(--color-text);
+  padding: 0.9rem 1.5rem;
+  overflow: hidden;
+  isolation: isolate;
+  color: #fff;
+  font-weight: 500;
+  background: var(--glass);
+  border: 1px solid rgb(255 255 255 / 28%);
   border-radius: 999px;
+  -webkit-backdrop-filter: blur(14px) saturate(1.8);
+  backdrop-filter: blur(14px) saturate(1.8);
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 55%),
+    inset 0 -10px 18px rgb(255 255 255 / 6%),
+    inset 0 0 0 1px rgb(255 255 255 / 6%),
+    0 8px 22px rgb(0 0 0 / 28%);
   transition:
-    transform 0.25s ease,
-    background-color 0.25s ease,
-    color 0.25s ease,
-    box-shadow 0.25s ease;
+    transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1),
+    background-color 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
-.button:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 18px rgb(0 0 0 / 30%);
+/* Brillo curvo en la mitad superior */
+.button::before {
+  content: "";
+  position: absolute;
+  inset: 1px 6% 52%;
+  z-index: -1;
+  border-radius: 999px;
+  background: linear-gradient(
+    to bottom,
+    rgb(255 255 255 / 38%),
+    rgb(255 255 255 / 4%)
+  );
+  pointer-events: none;
 }
 
+/* Luz líquida que sigue al cursor */
+.button::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: radial-gradient(
+    circle 5rem at var(--mx) var(--my),
+    rgb(255 255 255 / 45%),
+    rgb(255 255 255 / 0%) 70%
+  );
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  pointer-events: none;
+}
+
+.button:hover,
+.button:focus-visible {
+  transform: translateY(-2px) scale(1.05);
+  border-color: rgb(255 255 255 / 55%);
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 75%),
+    inset 0 -10px 20px rgb(255 255 255 / 10%),
+    inset 0 0 0 1px rgb(255 255 255 / 10%),
+    0 14px 30px rgb(0 0 0 / 35%),
+    0 0 26px rgb(120 170 255 / 28%);
+}
+
+.button:hover::after,
+.button:focus-visible::after {
+  opacity: 1;
+}
+
+.button:active {
+  transform: translateY(0) scale(0.98);
+}
+
+/* Primario: cristal más denso y con tinte azulado */
 .button-primary {
-  color: white;
-  background: var(--color-text);
-}
-
-.button-primary:hover {
-  color: white;
-  background: var(--color-text);
-}
-
-.button-secondary {
-  background: transparent;
-}
-
-.button-secondary:hover {
-  color: white;
-  background: var(--color-text);
+  --glass: rgb(150 190 255 / 26%);
+  border-color: rgb(190 215 255 / 50%);
 }
 
 .button:focus-visible {
   outline: 3px solid #6aa9ff;
   outline-offset: 4px;
+}
+
+.site-header .nav-button {
+  color: #fff;
+  font-size: 1.2rem;
+  font-weight: 600;
 }
 
 .nav-button {
@@ -225,7 +416,6 @@ h2 {
 .section {
   min-height: 50vh;
   padding: 4rem 5vw;
-  border-top: 1px solid var(--color-border);
 }
 
 /* ==================================================
@@ -234,8 +424,8 @@ h2 {
 
 .projects-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.5rem;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1.25rem;
   margin-top: 3rem;
 }
 
@@ -264,25 +454,26 @@ h2 {
 }
 
 .project-info {
-  padding: 1.5rem;
+  padding: 1.1rem 1.2rem 1.3rem;
 }
 
 .project-type {
   margin: 0;
   color: var(--color-muted);
-  font-size: 0.8rem;
+  font-size: 0.7rem;
   text-transform: uppercase;
 }
 
 .project-info h3 {
-  margin: 0.6rem 0 0.75rem;
-  font-size: 1.5rem;
+  margin: 0.5rem 0 0.6rem;
+  font-size: 1.25rem;
 }
 
 .project-description {
-  margin: 0 0 1.5rem;
+  margin: 0;
   color: var(--color-muted);
-  line-height: 1.6;
+  font-size: 0.9rem;
+  line-height: 1.55;
 }
 
 .project-link {
@@ -380,6 +571,225 @@ h2 {
 }
 
 /* ==================================================
+   9b. ANIMACIONES DE ENTRADA (reveal)
+   Uso: añade data-animate a cualquier elemento.
+   Retardo opcional: style="--delay: 150ms"
+   En rejillas: data-stagger en el contenedor.
+   Solo se oculta si el JS ha puesto html.js-anim.
+================================================== */
+
+html.js-anim [data-animate] {
+  opacity: 0;
+  translate: 0 1rem;
+  transition:
+    opacity 0.7s ease-out var(--delay, 0ms),
+    translate 0.7s ease-out var(--delay, 0ms),
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+  will-change: opacity, translate;
+}
+
+html.js-anim [data-animate].is-visible {
+  opacity: 1;
+  translate: 0 0;
+  will-change: auto;
+}
+
+/* Línea del primer salto de sección: se dibuja de izquierda a derecha */
+.section-line {
+  height: 1px;
+  margin-inline: 5vw;
+  background: color-mix(in srgb, var(--color-text) 35%, var(--color-border));
+}
+
+html.js-anim .section-line[data-animate] {
+  opacity: 1;
+  translate: none;
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+html.js-anim .section-line[data-animate].is-visible {
+  transform: scaleX(1);
+}
+
+/* ==================================================
+   9c. MOCKUPS DE DISPOSITIVOS (monitor, tablet y móvil con CSS)
+   Se usan cuando un proyecto solo tiene capturas. Todo en cqw para
+   escalar con el contenedor (cabecera, tarjeta del home y sección responsive).
+================================================== */
+
+.device-scene {
+  --pantalla: #fff;
+  position: relative;
+  container-type: inline-size;
+  width: 100%;
+  aspect-ratio: 1586 / 992;
+  filter: drop-shadow(0 2cqw 3cqw rgb(0 0 0 / 22%));
+}
+
+.device-scene img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center top;
+}
+
+/* Monitor de escritorio */
+.device-desktop {
+  position: absolute;
+  bottom: 5%;
+  left: 3%;
+  width: 72%;
+}
+
+.device-desktop__frame {
+  padding: 0.9cqw;
+  border: 0.15cqw solid #3b3d42;
+  border-radius: 1.4cqw;
+  background: #0a0a0c;
+}
+
+.device-desktop__screen {
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  border-radius: 0.5cqw;
+  background: var(--pantalla);
+}
+
+.device-desktop__neck {
+  width: 9%;
+  height: 5.5cqw;
+  margin-inline: auto;
+  background: linear-gradient(90deg, #8d9097, #d4d7dc 45%, #8d9097);
+}
+
+.device-desktop__foot {
+  width: 22%;
+  height: 0.9cqw;
+  margin-inline: auto;
+  border-radius: 0.9cqw 0.9cqw 0.3cqw 0.3cqw;
+  background: linear-gradient(#d4d7dc, #8d9097);
+}
+
+/* Móvil */
+.device-phone {
+  position: absolute;
+  right: 3%;
+  bottom: 7%;
+  width: 17.5%;
+  padding: 0.7cqw;
+  border: 0.15cqw solid #4a4c52;
+  border-radius: 3cqw;
+  background: #0a0a0c;
+  box-shadow: inset 0 0 0 0.25cqw #1b1c1f;
+}
+
+.device-phone::before {
+  content: "";
+  position: absolute;
+  top: 1.5cqw;
+  left: 50%;
+  z-index: 1;
+  width: 28%;
+  height: 1.1cqw;
+  border-radius: 1cqw;
+  background: #0a0a0c;
+  translate: -50% 0;
+}
+
+.device-phone__screen {
+  aspect-ratio: 9 / 19.5;
+  overflow: hidden;
+  border-radius: 2.4cqw;
+  background: var(--pantalla);
+}
+
+.device-phone__screen img {
+  object-fit: cover;
+}
+
+/* Sección responsive: tablet + móvil */
+.device-scene--responsive {
+  width: min(100%, 800px);
+  aspect-ratio: 4 / 3;
+  justify-self: center;
+}
+
+.device-tablet {
+  position: absolute;
+  top: 10%;
+  right: 2%;
+  width: 78%;
+  padding: 1.6cqw;
+  border: 0.15cqw solid #3b3d42;
+  border-radius: 3.2cqw;
+  background: #0a0a0c;
+}
+
+.device-tablet__screen {
+  aspect-ratio: 16 / 11;
+  overflow: hidden;
+  border-radius: 1.6cqw;
+  background: var(--pantalla);
+}
+
+.device-scene--responsive .device-phone {
+  right: auto;
+  bottom: 6%;
+  left: 3%;
+  width: 26%;
+  border-radius: 4cqw;
+}
+
+.device-scene--responsive .device-phone::before {
+  top: 2cqw;
+  height: 1.5cqw;
+}
+
+.device-scene--responsive .device-phone__screen {
+  border-radius: 3.3cqw;
+}
+
+/* Sin móvil: el dispositivo principal se centra */
+.device-scene--hero.device-scene--solo .device-desktop {
+  left: 14%;
+}
+
+.device-scene--responsive.device-scene--solo .device-tablet {
+  right: auto;
+  left: 50%;
+  width: 90%;
+  translate: -50% 0;
+}
+
+/* Tablet con su propia captura (4:3) */
+.device-tablet__screen--nativa {
+  aspect-ratio: 4 / 3;
+}
+
+.device-tablet--mini {
+  top: auto;
+  right: 3%;
+  bottom: 7%;
+  width: 27%;
+  padding: 0.8cqw;
+  border-radius: 1.8cqw;
+}
+
+.device-tablet--mini .device-tablet__screen {
+  border-radius: 0.9cqw;
+}
+
+/* Tarjeta del home */
+.project-card > .device-scene {
+  background: var(--color-background);
+  filter: none;
+}
+
+/* ==================================================
    10. ACCESIBILIDAD
 ================================================== */
 
@@ -388,11 +798,25 @@ h2 {
     scroll-behavior: auto;
   }
 
-  .button {
+  .site-header {
+    animation: none;
+  }
+
+  html.js-anim [data-animate],
+  html.js-anim .section-line[data-animate] {
+    opacity: 1;
+    translate: none;
+    transform: none;
     transition: none;
   }
 
-  .button:hover {
+  .button,
+  .button::after {
+    transition: none;
+  }
+
+  .button:hover,
+  .button:focus-visible {
     transform: none;
   }
 }
@@ -400,16 +824,26 @@ h2 {
 /* ==================================================
    11. RESPONSIVE
 ================================================== */
+@media (max-width: 1100px) {
+  .projects-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
 @media (max-width: 900px) {
-  .projects-grid,
   .services-grid {
     grid-template-columns: 1fr;
   }
 }
 
 @media (max-width: 700px) {
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 700px) {
   .site-header {
-    position: relative;
     flex-direction: row;
     align-items: center;
     gap: 1rem;
@@ -418,17 +852,17 @@ h2 {
   .menu-toggle {
     display: block;
     padding: 0.4rem 0.65rem;
-    border: 1px solid var(--color-text);
+    border: 1px solid #fff;
     border-radius: 0.5rem;
-    color: var(--color-text);
+    color: #fff;
     background: transparent;
-    font-size: 1.5rem;
+    font-size: 2rem;
     line-height: 1;
     cursor: pointer;
   }
 
   .hero {
-    padding: 1.5rem 1rem;
+    padding: calc(1.5rem + var(--header-height)) 1rem 1.5rem;
   }
 
   .about-grid {
@@ -453,12 +887,16 @@ h2 {
     box-shadow: 0 8px 18px rgb(0 0 0 / 15%);
   }
 
+  .site-header .main-nav .nav-button {
+    color: var(--color-text);
+  }
+
   .main-nav.is-open {
     display: flex;
   }
 
   .brand {
-    width: min(60vw, 250px);
+    width: min(60vw, 260px);
   }
 }
 
@@ -623,7 +1061,6 @@ h2 {
   flex-wrap: wrap;
   gap: 1rem;
   padding: 2rem 5vw;
-  border-top: 1px solid var(--color-border);
   color: var(--color-muted);
   font-size: 0.9rem;
 }

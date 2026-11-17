@@ -1,5 +1,8 @@
 import "./style.css";
 import "./cuestionario.css";
+import { initTheme } from "./theme";
+
+initTheme();
 
 const app = document.querySelector("#cuestionario-app");
 
@@ -731,7 +734,7 @@ app.innerHTML = /* HTML */ `
     <section class="questionnaire-success" data-success hidden tabindex="-1">
       <p class="eyebrow">Cuestionario enviado</p>
 
-      <h1>Gracias por contarme tu proyecto.</h1>
+      <h1>Gracias por contarme tu proyecto</h1>
 
       <p>
         Revisaré tus respuestas y me pondré en contacto contigo para comentar

@@ -1,4 +1,10 @@
 import "./style.css";
+import { initReveal } from "./reveal";
+import { initHeroAscii } from "./hero-ascii";
+import { initTheme } from "./theme";
+import { initRotatingText } from "./rotating-text";
+import proyectos from "virtual:proyectos";
+import { renderTarjeta } from "./proyectos-ui";
 
 document.querySelector("#app").innerHTML = /* HTML */ `
   <header class="site-header">
@@ -27,113 +33,49 @@ document.querySelector("#app").innerHTML = /* HTML */ `
   <main>
     <section class="hero">
       <div class="hero-content">
-        <h1>Páginas web claras, modernas y profesionales.</h1>
-        <p class="hero-text">
+        <h1 data-animate>
+          <span
+            class="rotating-text"
+            data-rotating-text='["Tu negocio", "Tu idea", "Tu proyecto"]'
+          >
+            <span class="rt-sr">Tu negocio</span>
+            <span class="rt-visual" aria-hidden="true">Tu negocio</span>
+          </span>
+          <span class="h1-rest">merece una web<br />a su altura</span>
+        </h1>
+        <p class="hero-text" data-animate style="--delay: 150ms">
           Diseño y desarrollo de páginas web para pequeñas empresas y
-          profesionales que quieren mejorar su presencia digital.
+          profesionales que quieren mejorar su presencia digital
         </p>
 
-        <div class="hero-actions">
+        <div class="hero-actions" data-animate style="--delay: 300ms">
           <a class="button button-primary" href="#proyectos">Ver proyectos</a>
           <a class="button button-secondary" href="#contacto">Hablemos</a>
         </div>
       </div>
 
-      <div class="hero-visual">
-        <video
-          class="hero-video"
-          autoplay
-          muted
-          loop
-          playsinline
-          webkit-playsinline
-          preload="auto"
-          controlslist="nodownload noplaybackrate"
-          aria-label="Animación abstracta de presentación"
-        >
-          <source src="/videos/hero-abstracto.mp4" type="video/mp4" />
-        </video>
-      </div>
+      <div class="hero-ascii" aria-hidden="true"></div>
     </section>
 
-    <section id="proyectos" class="section projects-section">
+    <div class="section-line" data-animate aria-hidden="true"></div>
+
+    <section id="proyectos" class="section projects-section" data-animate>
       <p class="eyebrow">Trabajos realizados</p>
       <h2>Proyectos web</h2>
 
-      <div class="projects-grid">
-        <a
-          class="project-card"
-          href="/proyectos/campus-camila-hiruela/"
-          aria-label="Ver el proyecto Campus Camila Hiruela"
-        >
-          <img
-            src="/imagenes/campus-camila-hiruela/mockup-portada-real.png"
-            alt="Web del Campus Camila Hiruela mostrada en ordenador y teléfono móvil"
-            width="1586"
-            height="992"
-            loading="lazy"
-          />
-
-          <div class="project-info">
-            <p class="project-type">Web multipágina · Evento deportivo</p>
-            <h3>Campus Camila Hiruela</h3>
-            <p class="project-description">
-              Web multipágina para presentar el campus, facilitar a los
-              participantes la inscripción y toda la información del evento.
-            </p>
-          </div>
-        </a>
-
-        <a
-          class="project-card"
-          href="/proyectos/club-baldos/"
-          aria-label="Ver el proyecto Club Baldo’s"
-        >
-          <img
-            src="/imagenes/club-baldos/portada-mockup.png"
-            alt="Aplicación web de Club Baldo’s"
-          />
-
-          <div class="project-info">
-            <p class="project-type">Aplicación web · Reservas deportivas</p>
-            <h3>Club Baldo’s</h3>
-            <p class="project-description">
-              Plataforma de reservas deportivas con una interfaz responsive y un
-              panel para gestionar disponibilidad, reservas y pagos.
-            </p>
-          </div>
-        </a>
-
-        <a
-          class="project-card"
-          href="/proyectos/volleystats/"
-          aria-label="Ver el proyecto VolleyStats"
-        >
-          <img
-            src="/imagenes/volleystats/portada-mockup.png"
-            alt="Aplicación web VolleyStats"
-          />
-
-          <div class="project-info">
-            <p class="project-type">Aplicación web · Estadísticas deportivas</p>
-            <h3>VolleyStats</h3>
-            <p class="project-description">
-              Aplicación para registrar partidos de vóley y consultar
-              estadísticas por jugador, set y rotación, pensada para ordenador y
-              tablet.
-            </p>
-          </div>
-        </a>
+      <div class="projects-grid" data-stagger>
+        ${proyectos.map(renderTarjeta).join("")}
       </div>
     </section>
 
-    <section id="servicios" class="section">
+    <section id="servicios" class="section" data-animate>
       <p class="eyebrow">Diseño y desarrollo</p>
       <h2>Servicios de diseño y desarrollo web</h2>
 
-      <div class="services-grid">
+      <div class="services-grid" data-stagger>
         <a
           class="service-card"
+          data-animate
           href="/paginas-web/"
           aria-label="Ver el servicio de páginas web"
         >
@@ -154,6 +96,7 @@ document.querySelector("#app").innerHTML = /* HTML */ `
 
         <a
           class="service-card"
+          data-animate
           href="/aplicaciones-web/"
           aria-label="Ver el servicio de aplicaciones web"
         >
@@ -174,11 +117,11 @@ document.querySelector("#app").innerHTML = /* HTML */ `
       </div>
     </section>
 
-    <section id="sobre-mi" class="section about-section">
+    <section id="sobre-mi" class="section about-section" data-animate>
       <p class="eyebrow">Mi enfoque</p>
       <div class="about-grid">
         <div>
-          <h2>Diseño y desarrollo con atención al detalle.</h2>
+          <h2>Diseño y desarrollo con atención al detalle</h2>
         </div>
 
         <div class="about-content">
@@ -195,7 +138,7 @@ document.querySelector("#app").innerHTML = /* HTML */ `
       </div>
     </section>
 
-    <section id="contacto" class="section contact-section">
+    <section id="contacto" class="section contact-section" data-animate>
       <p class="eyebrow">Contacto</p>
 
       <div class="contact-layout">
@@ -285,46 +228,16 @@ document.querySelector("#app").innerHTML = /* HTML */ `
   </footer>
 `;
 
+initReveal();
+document
+  .querySelectorAll("[data-rotating-text]")
+  .forEach((el) => initRotatingText(el));
+
 const menuToggle = document.querySelector(".menu-toggle");
 const mainNav = document.querySelector(".main-nav");
-const heroVideo = document.querySelector(".hero-video");
 
-function playHeroVideo() {
-  heroVideo.muted = true;
-  heroVideo.defaultMuted = true;
-  heroVideo.playsInline = true;
-
-  const playAttempt = heroVideo.play();
-
-  if (playAttempt) {
-    playAttempt
-      .then(() => {
-        heroVideo.controls = false;
-        heroVideo.classList.remove("is-playback-blocked");
-      })
-      .catch(() => {
-        heroVideo.controls = true;
-        heroVideo.classList.add("is-playback-blocked");
-      });
-  }
-}
-
-if (heroVideo.readyState >= 2) {
-  playHeroVideo();
-} else {
-  heroVideo.addEventListener("loadeddata", playHeroVideo, { once: true });
-}
-
-document.addEventListener("touchstart", playHeroVideo, {
-  once: true,
-  passive: true,
-});
-
-document.addEventListener("visibilitychange", () => {
-  if (!document.hidden && heroVideo.paused) {
-    playHeroVideo();
-  }
-});
+const pageRays = initTheme();
+initHeroAscii(pageRays);
 
 function closeMenu() {
   mainNav.classList.remove("is-open");
