@@ -2,6 +2,7 @@ import "./style.css";
 import { initReveal } from "./reveal";
 import { initHeroAscii } from "./hero-ascii";
 import { initTheme } from "./theme";
+import { initRotatingText } from "./rotating-text";
 
 document.querySelector("#app").innerHTML = /* HTML */ `
   <header class="site-header">
@@ -30,7 +31,16 @@ document.querySelector("#app").innerHTML = /* HTML */ `
   <main>
     <section class="hero">
       <div class="hero-content">
-        <h1 data-animate>Tu negocio merece una web a su altura</h1>
+        <h1 data-animate>
+          <span
+            class="rotating-text"
+            data-rotating-text='["Tu negocio", "Tu idea", "Tu proyecto"]'
+          >
+            <span class="rt-sr">Tu negocio</span>
+            <span class="rt-visual" aria-hidden="true">Tu negocio</span>
+          </span>
+          <span class="h1-rest">merece una web<br />a su altura</span>
+        </h1>
         <p class="hero-text" data-animate style="--delay: 150ms">
           Diseño y desarrollo de páginas web para pequeñas empresas y
           profesionales que quieren mejorar su presencia digital
@@ -282,6 +292,9 @@ document.querySelector("#app").innerHTML = /* HTML */ `
 `;
 
 initReveal();
+document
+  .querySelectorAll("[data-rotating-text]")
+  .forEach((el) => initRotatingText(el));
 
 const menuToggle = document.querySelector(".menu-toggle");
 const mainNav = document.querySelector(".main-nav");

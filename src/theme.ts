@@ -16,6 +16,21 @@ export function initTheme(): PageRays {
   updateHeaderState();
   window.addEventListener("scroll", updateHeaderState, { passive: true });
 
+  // Liquid glass: la luz del botón sigue al cursor.
+  document.addEventListener(
+    "pointermove",
+    (event) => {
+      const button = (event.target as Element | null)?.closest<HTMLElement>(
+        ".button",
+      );
+      if (!button) return;
+      const rect = button.getBoundingClientRect();
+      button.style.setProperty("--mx", `${event.clientX - rect.left}px`);
+      button.style.setProperty("--my", `${event.clientY - rect.top}px`);
+    },
+    { passive: true },
+  );
+
   const element = document.createElement("div");
   element.className = "page-rays";
   element.setAttribute("aria-hidden", "true");

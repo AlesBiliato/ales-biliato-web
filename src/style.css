@@ -231,14 +231,47 @@ section[id] {
 
 .hero h1 {
   max-width: 1200px;
-  font-size: clamp(2.5rem, 6vw, 7rem);
+  font-size: clamp(2.2rem, 5vw, 6rem);
   margin-right: auto;
   margin-left: auto;
   font-family: "Playfair Display", Georgia, serif;
   font-weight: 600;
-  letter-spacing: -0.01em;
+  line-height: 1.15;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
   -webkit-text-stroke: 5px #000;
   paint-order: stroke fill;
+}
+
+/* Texto rotativo del h1: primera línea cambia, "merece una web..." queda debajo */
+.rotating-text {
+  display: block;
+}
+
+.rt-sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.h1-rest {
+  display: block;
+}
+
+/* Cada palabra recorta el slide; el padding evita cortar el contorno del texto */
+.rt-word {
+  display: inline-flex;
+  padding: 0.15em 0.08em;
+  margin: -0.15em -0.08em;
+  overflow: hidden;
+}
+
+.rt-char {
+  display: inline-block;
+  white-space: pre;
 }
 
 .hero-text {
@@ -262,46 +295,92 @@ section[id] {
    5. BOTONES
 ================================================== */
 
+/* Liquid glass: cristal translúcido con desenfoque, brillo especular y una luz
+   que sigue al cursor (--mx / --my los actualiza theme.ts). */
 .button {
+  --glass: rgb(255 255 255 / 9%);
+  --mx: 50%;
+  --my: 0%;
+  position: relative;
   display: inline-block;
-  padding: 0.9rem 1.3rem;
-  border: 1px solid var(--color-text);
+  padding: 0.9rem 1.5rem;
+  overflow: hidden;
+  isolation: isolate;
+  color: #fff;
+  font-weight: 500;
+  background: var(--glass);
+  border: 1px solid rgb(255 255 255 / 28%);
   border-radius: 999px;
+  -webkit-backdrop-filter: blur(14px) saturate(1.8);
+  backdrop-filter: blur(14px) saturate(1.8);
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 55%),
+    inset 0 -10px 18px rgb(255 255 255 / 6%),
+    inset 0 0 0 1px rgb(255 255 255 / 6%),
+    0 8px 22px rgb(0 0 0 / 28%);
   transition:
-    transform 0.25s ease,
-    background-color 0.25s ease,
-    color 0.25s ease,
-    box-shadow 0.25s ease;
+    transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1),
+    background-color 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
-.button:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 18px rgb(0 0 0 / 30%);
+/* Brillo curvo en la mitad superior */
+.button::before {
+  content: "";
+  position: absolute;
+  inset: 1px 6% 52%;
+  z-index: -1;
+  border-radius: 999px;
+  background: linear-gradient(
+    to bottom,
+    rgb(255 255 255 / 38%),
+    rgb(255 255 255 / 4%)
+  );
+  pointer-events: none;
 }
 
+/* Luz líquida que sigue al cursor */
+.button::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: radial-gradient(
+    circle 5rem at var(--mx) var(--my),
+    rgb(255 255 255 / 45%),
+    rgb(255 255 255 / 0%) 70%
+  );
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  pointer-events: none;
+}
+
+.button:hover,
+.button:focus-visible {
+  transform: translateY(-2px) scale(1.05);
+  border-color: rgb(255 255 255 / 55%);
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 75%),
+    inset 0 -10px 20px rgb(255 255 255 / 10%),
+    inset 0 0 0 1px rgb(255 255 255 / 10%),
+    0 14px 30px rgb(0 0 0 / 35%),
+    0 0 26px rgb(120 170 255 / 28%);
+}
+
+.button:hover::after,
+.button:focus-visible::after {
+  opacity: 1;
+}
+
+.button:active {
+  transform: translateY(0) scale(0.98);
+}
+
+/* Primario: cristal más denso y con tinte azulado */
 .button-primary {
-  color: white;
-  background: var(--color-text);
-}
-
-.button-primary:hover {
-  color: white;
-  background: var(--color-text);
-}
-
-.button-secondary {
-  background: transparent;
-}
-
-.button-secondary:hover {
-  color: white;
-  background: var(--color-text);
-}
-
-.theme-dark .button-primary,
-.theme-dark .button-primary:hover,
-.theme-dark .button-secondary:hover {
-  color: var(--color-background);
+  --glass: rgb(150 190 255 / 26%);
+  border-color: rgb(190 215 255 / 50%);
 }
 
 .button:focus-visible {
@@ -555,11 +634,13 @@ html.js-anim .section-line[data-animate].is-visible {
     transition: none;
   }
 
-  .button {
+  .button,
+  .button::after {
     transition: none;
   }
 
-  .button:hover {
+  .button:hover,
+  .button:focus-visible {
     transform: none;
   }
 }
