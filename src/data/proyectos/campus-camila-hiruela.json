@@ -1,0 +1,103 @@
+{
+  "orden": 3,
+  "nombre": "Campus Camila Hiruela",
+  "tipo": "Web multipágina",
+  "categoria": "Evento deportivo",
+  "tarjeta": "Web multipágina para presentar el campus, facilitar a los participantes la inscripción y toda la información del evento.",
+  "resumen": "Diseño y desarrollo de una web para presentar un campus de vóley, reunir toda la información del evento y facilitar el acceso a la inscripción.",
+  "url": "https://campuscamilahiruela.com/",
+  "botonVisitar": "Visitar la web",
+  "detalles": [
+    {
+      "etiqueta": "Servicio",
+      "valor": "Diseño y desarrollo web"
+    },
+    {
+      "etiqueta": "Tipo de proyecto",
+      "valor": "Web multipágina"
+    },
+    {
+      "etiqueta": "Sector",
+      "valor": "Deporte y eventos"
+    },
+    {
+      "etiqueta": "Ubicación",
+      "valor": "San Salvador de Jujuy, Argentina"
+    }
+  ],
+  "proyecto": {
+    "titulo": "Una web para centralizar toda la información del campus",
+    "parrafos": [
+      "El Campus Camila Hiruela necesitaba un espacio digital propio donde presentar la propuesta, explicar quiénes forman parte del proyecto y resolver las principales dudas de participantes y familias.",
+      "La información debía ser fácil de consultar antes de la inscripción: lugar, fechas, edades, beneficios, disponibilidad, forma de pago y vías de contacto."
+    ]
+  },
+  "objetivo": {
+    "titulo": "Convertir mucha información práctica en una experiencia clara",
+    "parrafos": [
+      "En un evento de estas características, los usuarios necesitan encontrar respuestas rápidamente. Una estructura confusa puede provocar dudas y dificultar el proceso de inscripción.",
+      "El reto consistió en ordenar los contenidos, destacar la información importante y mantener una identidad visual deportiva sin perder claridad ni facilidad de uso."
+    ]
+  },
+  "solucion": {
+    "titulo": "Una estructura sencilla para acompañar todo el recorrido",
+    "pasos": [
+      {
+        "titulo": "Presentación del campus",
+        "texto": "Una portada visual introduce el evento, su identidad y su propuesta desde el primer momento."
+      },
+      {
+        "titulo": "Información organizada",
+        "texto": "Las fechas, ubicación, edades, beneficios y condiciones se presentan en bloques fáciles de localizar y comprender."
+      },
+      {
+        "titulo": "Acceso a la inscripción",
+        "texto": "Las llamadas a la acción conducen al formulario correspondiente sin obligar al usuario a buscar cómo participar."
+      },
+      {
+        "titulo": "Galería del evento",
+        "texto": "La galería permite conservar y mostrar la experiencia del campus mediante fotografías."
+      }
+    ]
+  },
+  "escritorio": {
+    "eyebrow": "Diseño de escritorio",
+    "titulo": "Una presentación visual con toda la información accesible"
+  },
+  "responsive": {
+    "eyebrow": "Diseño responsive",
+    "titulo": "Preparada para consultarse desde cualquier dispositivo",
+    "texto": "La navegación, los contenidos y las llamadas a la acción se adaptan para que participantes y familias puedan consultar la información cómodamente desde la tablet o el teléfono.",
+    "grupoDispositivos": true
+  },
+  "resultado": {
+    "titulo": "Un punto de información único para participantes y familias",
+    "parrafos": [
+      "La web reúne la presentación del campus, la información práctica, la inscripción, los canales de contacto y la galería dentro de una experiencia coherente.",
+      "El proyecto puede seguir utilizándose para comunicar nuevas ediciones y actualizar sus contenidos a medida que evoluciona el evento."
+    ],
+    "botonVisitar": "Ver el proyecto publicado"
+  },
+  "cta": {
+    "titulo": "¿Necesitas una web para presentar tu negocio o evento?",
+    "texto": "Cuéntame qué necesitas y hablaremos sobre cómo organizar el contenido, diseñar la experiencia y convertirlo en una web profesional."
+  },
+  "seo": {
+    "titulo": "Web del Campus Camila Hiruela | Proyecto de Ales Biliato",
+    "descripcion": "Caso de estudio del diseño y desarrollo de la web del Campus Camila Hiruela, un campus de vóley celebrado en Jujuy.",
+    "descripcionSocial": "Diseño y desarrollo de una web multipágina para presentar el campus, organizar su información y facilitar la inscripción."
+  },
+  "imagenes": {
+    "portada": false,
+    "responsive": false,
+    "escritorio": "captura-desktop-real.png",
+    "movil": "captura-mobile-real.png",
+    "alt": {
+      "portada": "Página web real del Campus Camila Hiruela mostrada en un ordenador portátil",
+      "tarjeta": "Web del Campus Camila Hiruela mostrada en ordenador y teléfono móvil",
+      "escritorio": "Página web real del Campus Camila Hiruela en ordenador",
+      "responsive": "Web del Campus Camila Hiruela mostrada en tablets y teléfono móvil",
+      "movil": "Web del Campus Camila Hiruela en un teléfono móvil"
+    }
+  }
+}

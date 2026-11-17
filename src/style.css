@@ -424,8 +424,8 @@ section[id] {
 
 .projects-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.5rem;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1.25rem;
   margin-top: 3rem;
 }
 
@@ -454,25 +454,26 @@ section[id] {
 }
 
 .project-info {
-  padding: 1.5rem;
+  padding: 1.1rem 1.2rem 1.3rem;
 }
 
 .project-type {
   margin: 0;
   color: var(--color-muted);
-  font-size: 0.8rem;
+  font-size: 0.7rem;
   text-transform: uppercase;
 }
 
 .project-info h3 {
-  margin: 0.6rem 0 0.75rem;
-  font-size: 1.5rem;
+  margin: 0.5rem 0 0.6rem;
+  font-size: 1.25rem;
 }
 
 .project-description {
-  margin: 0 0 1.5rem;
+  margin: 0;
   color: var(--color-muted);
-  line-height: 1.6;
+  font-size: 0.9rem;
+  line-height: 1.55;
 }
 
 .project-link {
@@ -614,6 +615,181 @@ html.js-anim .section-line[data-animate].is-visible {
 }
 
 /* ==================================================
+   9c. MOCKUPS DE DISPOSITIVOS (monitor, tablet y móvil con CSS)
+   Se usan cuando un proyecto solo tiene capturas. Todo en cqw para
+   escalar con el contenedor (cabecera, tarjeta del home y sección responsive).
+================================================== */
+
+.device-scene {
+  --pantalla: #fff;
+  position: relative;
+  container-type: inline-size;
+  width: 100%;
+  aspect-ratio: 1586 / 992;
+  filter: drop-shadow(0 2cqw 3cqw rgb(0 0 0 / 22%));
+}
+
+.device-scene img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center top;
+}
+
+/* Monitor de escritorio */
+.device-desktop {
+  position: absolute;
+  bottom: 5%;
+  left: 3%;
+  width: 72%;
+}
+
+.device-desktop__frame {
+  padding: 0.9cqw;
+  border: 0.15cqw solid #3b3d42;
+  border-radius: 1.4cqw;
+  background: #0a0a0c;
+}
+
+.device-desktop__screen {
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  border-radius: 0.5cqw;
+  background: var(--pantalla);
+}
+
+.device-desktop__neck {
+  width: 9%;
+  height: 5.5cqw;
+  margin-inline: auto;
+  background: linear-gradient(90deg, #8d9097, #d4d7dc 45%, #8d9097);
+}
+
+.device-desktop__foot {
+  width: 22%;
+  height: 0.9cqw;
+  margin-inline: auto;
+  border-radius: 0.9cqw 0.9cqw 0.3cqw 0.3cqw;
+  background: linear-gradient(#d4d7dc, #8d9097);
+}
+
+/* Móvil */
+.device-phone {
+  position: absolute;
+  right: 3%;
+  bottom: 7%;
+  width: 17.5%;
+  padding: 0.7cqw;
+  border: 0.15cqw solid #4a4c52;
+  border-radius: 3cqw;
+  background: #0a0a0c;
+  box-shadow: inset 0 0 0 0.25cqw #1b1c1f;
+}
+
+.device-phone::before {
+  content: "";
+  position: absolute;
+  top: 1.5cqw;
+  left: 50%;
+  z-index: 1;
+  width: 28%;
+  height: 1.1cqw;
+  border-radius: 1cqw;
+  background: #0a0a0c;
+  translate: -50% 0;
+}
+
+.device-phone__screen {
+  aspect-ratio: 9 / 19.5;
+  overflow: hidden;
+  border-radius: 2.4cqw;
+  background: var(--pantalla);
+}
+
+.device-phone__screen img {
+  object-fit: cover;
+}
+
+/* Sección responsive: tablet + móvil */
+.device-scene--responsive {
+  width: min(100%, 800px);
+  aspect-ratio: 4 / 3;
+  justify-self: center;
+}
+
+.device-tablet {
+  position: absolute;
+  top: 10%;
+  right: 2%;
+  width: 78%;
+  padding: 1.6cqw;
+  border: 0.15cqw solid #3b3d42;
+  border-radius: 3.2cqw;
+  background: #0a0a0c;
+}
+
+.device-tablet__screen {
+  aspect-ratio: 16 / 11;
+  overflow: hidden;
+  border-radius: 1.6cqw;
+  background: var(--pantalla);
+}
+
+.device-scene--responsive .device-phone {
+  right: auto;
+  bottom: 6%;
+  left: 3%;
+  width: 26%;
+  border-radius: 4cqw;
+}
+
+.device-scene--responsive .device-phone::before {
+  top: 2cqw;
+  height: 1.5cqw;
+}
+
+.device-scene--responsive .device-phone__screen {
+  border-radius: 3.3cqw;
+}
+
+/* Sin móvil: el dispositivo principal se centra */
+.device-scene--hero.device-scene--solo .device-desktop {
+  left: 14%;
+}
+
+.device-scene--responsive.device-scene--solo .device-tablet {
+  right: auto;
+  left: 50%;
+  width: 90%;
+  translate: -50% 0;
+}
+
+/* Tablet con su propia captura (4:3) */
+.device-tablet__screen--nativa {
+  aspect-ratio: 4 / 3;
+}
+
+.device-tablet--mini {
+  top: auto;
+  right: 3%;
+  bottom: 7%;
+  width: 27%;
+  padding: 0.8cqw;
+  border-radius: 1.8cqw;
+}
+
+.device-tablet--mini .device-tablet__screen {
+  border-radius: 0.9cqw;
+}
+
+/* Tarjeta del home */
+.project-card > .device-scene {
+  background: var(--color-background);
+  filter: none;
+}
+
+/* ==================================================
    10. ACCESIBILIDAD
 ================================================== */
 
@@ -648,9 +824,20 @@ html.js-anim .section-line[data-animate].is-visible {
 /* ==================================================
    11. RESPONSIVE
 ================================================== */
+@media (max-width: 1100px) {
+  .projects-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
 @media (max-width: 900px) {
-  .projects-grid,
   .services-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 700px) {
+  .projects-grid {
     grid-template-columns: 1fr;
   }
 }

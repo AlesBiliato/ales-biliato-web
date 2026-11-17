@@ -1,0 +1,106 @@
+{
+  "orden": 2,
+  "nombre": "Club Baldo’s",
+  "tipo": "Aplicación web",
+  "categoria": "Reservas deportivas",
+  "tarjeta": "Plataforma de reservas deportivas con una interfaz responsive y un panel para gestionar disponibilidad, reservas y pagos.",
+  "resumen": "Diseño y desarrollo de una aplicación web responsive para consultar horarios disponibles y gestionar reservas deportivas online.",
+  "url": "https://clubbaldos.com/",
+  "botonVisitar": "Visitar la aplicación",
+  "detalles": [
+    {
+      "etiqueta": "Servicio",
+      "valor": "Diseño y desarrollo web"
+    },
+    {
+      "etiqueta": "Tipo de proyecto",
+      "valor": "Aplicación web"
+    },
+    {
+      "etiqueta": "Sector",
+      "valor": "Instalaciones deportivas"
+    },
+    {
+      "etiqueta": "Función principal",
+      "valor": "Reservas online"
+    }
+  ],
+  "proyecto": {
+    "titulo": "Una plataforma para consultar disponibilidad y reservar online",
+    "parrafos": [
+      "Club Baldo’s necesitaba reunir en un mismo espacio digital la presentación de sus instalaciones, los servicios disponibles y el proceso de reserva.",
+      "La aplicación permite elegir una actividad, consultar los horarios disponibles y completar la reserva sin depender de llamadas o mensajes para conocer la disponibilidad."
+    ]
+  },
+  "objetivo": {
+    "titulo": "Convertir la gestión de diferentes servicios en un proceso sencillo",
+    "parrafos": [
+      "Cada actividad puede tener horarios, duraciones y condiciones diferentes. Toda esa información debía presentarse sin complicar la experiencia del usuario.",
+      "El reto consistió en diseñar un recorrido claro desde la elección del servicio hasta la confirmación de la reserva, adaptado tanto a ordenador como a teléfono móvil."
+    ]
+  },
+  "solucion": {
+    "titulo": "Un recorrido guiado para reservar en pocos pasos",
+    "pasos": [
+      {
+        "titulo": "Elección del servicio",
+        "texto": "El usuario comienza seleccionando la actividad o instalación que desea reservar."
+      },
+      {
+        "titulo": "Horarios disponibles",
+        "texto": "La aplicación muestra la disponibilidad para que el usuario pueda elegir una fecha y una hora."
+      },
+      {
+        "titulo": "Reserva personalizada",
+        "texto": "El formulario permite indicar los datos de contacto, la duración y las opciones adicionales de la reserva."
+      },
+      {
+        "titulo": "Gestión de reservas",
+        "texto": "Cada usuario puede consultar sus reservas y mantener organizada su actividad desde la propia aplicación."
+      }
+    ]
+  },
+  "escritorio": {
+    "eyebrow": "Experiencia de escritorio",
+    "titulo": "Servicios, disponibilidad y reservas en una misma aplicación"
+  },
+  "responsive": {
+    "eyebrow": "Diseño responsive",
+    "titulo": "Preparada para reservar desde cualquier dispositivo",
+    "texto": "La interfaz se adapta para que los usuarios puedan consultar los servicios, comprobar la disponibilidad y completar una reserva cómodamente desde la tablet o el teléfono.",
+    "grupoDispositivos": true
+  },
+  "resultado": {
+    "titulo": "Una experiencia de reserva más directa para clientes y negocio",
+    "parrafos": [
+      "La aplicación reúne los servicios del club, la disponibilidad y el proceso de reserva dentro de una experiencia única y coherente.",
+      "Los usuarios pueden organizar su actividad con mayor autonomía, mientras que el negocio dispone de un canal digital preparado para centralizar las solicitudes de reserva."
+    ],
+    "botonVisitar": "Ver el proyecto publicado"
+  },
+  "cta": {
+    "titulo": "¿Necesitas digitalizar las reservas de tu negocio?",
+    "texto": "Cuéntame cómo funciona tu servicio y estudiaremos una solución que facilite las reservas y mejore la experiencia de tus clientes."
+  },
+  "seo": {
+    "titulo": "Club Baldo’s | Aplicación de reservas | Proyecto de Ales Biliato",
+    "descripcion": "Caso de estudio del diseño y desarrollo de Club Baldo’s, una aplicación web para consultar disponibilidad y gestionar reservas deportivas.",
+    "descripcionSocial": "Diseño y desarrollo de una aplicación web responsive para consultar horarios y gestionar reservas deportivas en Club Baldo’s."
+  },
+  "imagenes": {
+    "portada": false,
+    "responsive": false,
+    "escritorio": "portada-desktop.png",
+    "movil": "portada-mobile.png",
+    "alt": {
+      "portada": "Aplicación web de Club Baldo’s mostrada en ordenador y teléfono móvil",
+      "tarjeta": "Aplicación web de Club Baldo’s",
+      "escritorio": "Aplicación web de reservas de Club Baldo’s en ordenador",
+      "responsive": "Aplicación web de Club Baldo’s mostrada en tablets y teléfono móvil",
+      "movil": "Aplicación de Club Baldo’s en un teléfono móvil",
+      "seccionEscritorio": "Pantalla de reservas de Club Baldo’s en ordenador, con los horarios disponibles"
+    },
+    "seccionEscritorio": "captura-reservas-desktop-real.png"
+  },
+  "colorPantalla": "#f4f7f1"
+}

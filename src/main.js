@@ -3,6 +3,8 @@ import { initReveal } from "./reveal";
 import { initHeroAscii } from "./hero-ascii";
 import { initTheme } from "./theme";
 import { initRotatingText } from "./rotating-text";
+import proyectos from "virtual:proyectos";
+import { renderTarjeta } from "./proyectos-ui";
 
 document.querySelector("#app").innerHTML = /* HTML */ `
   <header class="site-header">
@@ -62,72 +64,7 @@ document.querySelector("#app").innerHTML = /* HTML */ `
       <h2>Proyectos web</h2>
 
       <div class="projects-grid" data-stagger>
-        <a
-          class="project-card"
-          data-animate
-          href="/proyectos/campus-camila-hiruela/"
-          aria-label="Ver el proyecto Campus Camila Hiruela"
-        >
-          <img
-            src="/imagenes/campus-camila-hiruela/mockup-portada-real.png"
-            alt="Web del Campus Camila Hiruela mostrada en ordenador y teléfono móvil"
-            width="1586"
-            height="992"
-            loading="lazy"
-          />
-
-          <div class="project-info">
-            <p class="project-type">Web multipágina · Evento deportivo</p>
-            <h3>Campus Camila Hiruela</h3>
-            <p class="project-description">
-              Web multipágina para presentar el campus, facilitar a los
-              participantes la inscripción y toda la información del evento.
-            </p>
-          </div>
-        </a>
-
-        <a
-          class="project-card"
-          data-animate
-          href="/proyectos/club-baldos/"
-          aria-label="Ver el proyecto Club Baldo’s"
-        >
-          <img
-            src="/imagenes/club-baldos/portada-mockup.png"
-            alt="Aplicación web de Club Baldo’s"
-          />
-
-          <div class="project-info">
-            <p class="project-type">Aplicación web · Reservas deportivas</p>
-            <h3>Club Baldo’s</h3>
-            <p class="project-description">
-              Plataforma de reservas deportivas con una interfaz responsive y un
-              panel para gestionar disponibilidad, reservas y pagos.
-            </p>
-          </div>
-        </a>
-
-        <a
-          class="project-card"
-          data-animate
-          href="/proyectos/volleystats/"
-          aria-label="Ver el proyecto VolleyStats"
-        >
-          <img
-            src="/imagenes/volleystats/portada-mockup.png"
-            alt="Aplicación web VolleyStats"
-          />
-
-          <div class="project-info">
-            <p class="project-type">Aplicación web · Estadísticas deportivas</p>
-            <h3>VolleyStats</h3>
-            <p class="project-description">
-              Aplicación para registrar partidos de vóley y consultar
-              estadísticas por jugador, set y rotación, pensada para ordenador y
-              tablet.
-            </p>
-          </div>
-        </a>
+        ${proyectos.map(renderTarjeta).join("")}
       </div>
     </section>
 
