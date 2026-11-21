@@ -987,10 +987,10 @@ html.js-anim .section-line[data-animate].is-visible {
 
 .site-footer {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start; /* © y Privacidad a la izquierda; el botón ↑ es fijo */
   align-items: center;
   flex-wrap: wrap;
-  gap: 1rem;
+  gap: 1rem 1.5rem;
   padding: 2rem var(--gutter);
   border-top: 1px solid var(--color-border);
   color: var(--color-muted);
