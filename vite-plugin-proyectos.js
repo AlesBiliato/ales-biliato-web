@@ -286,7 +286,12 @@ export default function proyectosPlugin() {
 
     generateBundle() {
       const hoy = new Date().toISOString().slice(0, 10);
-      const urls = [`${SITE_URL}/`, ...leerProyectos(root).map((p) => `${SITE_URL}/proyectos/${p.slug}/`)];
+      const urls = [
+        `${SITE_URL}/`,
+        `${SITE_URL}/paginas-web/`,
+        `${SITE_URL}/aplicaciones-web/`,
+        ...leerProyectos(root).map((p) => `${SITE_URL}/proyectos/${p.slug}/`),
+      ];
       const entradas = urls
         .map((loc) => `  <url>\n    <loc>${loc}</loc>\n    <lastmod>${hoy}</lastmod>\n  </url>`)
         .join("\n");
