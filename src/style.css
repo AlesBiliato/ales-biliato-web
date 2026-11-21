@@ -24,12 +24,14 @@
 .page-rays {
   position: fixed;
   inset: 0;
-  z-index: -1;
+  z-index: 101; /* por encima de la cabecera fija (z-index 100) */
   pointer-events: none;
 }
 
 html {
   scroll-behavior: smooth;
+  overflow-anchor: none;
+  scroll-padding-top: 5rem; /* evita que la cabecera fija tape las anclas */
 }
 
 * {
@@ -79,11 +81,25 @@ h2 {
 ================================================== */
 
 .site-header {
-  position: relative;
+  position: sticky;
+  top: 0;
+  z-index: 100;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1.5rem var(--gutter);
+  padding: 0.75rem var(--gutter);
+  background: rgb(245 245 242 / 80%);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  transition: padding 0.3s ease;
+}
+
+.site-header.is-scrolled {
+  padding-block: 0.45rem;
+}
+
+.site-header.is-scrolled .brand {
+  width: clamp(140px, 13vw, 190px);
 }
 
 .site-header::after {
@@ -98,8 +114,9 @@ h2 {
 
 .brand {
   display: block;
-  width: clamp(260px, 25vw, 360px);
+  width: clamp(170px, 17vw, 230px);
   flex-shrink: 0;
+  transition: width 0.3s ease;
 }
 
 .brand img {
@@ -804,6 +821,10 @@ html.js-anim .section-line[data-animate].is-visible {
 
   .brand {
     width: min(60vw, 250px);
+  }
+
+  .site-header.is-scrolled .brand {
+    width: min(45vw, 170px);
   }
 }
 
