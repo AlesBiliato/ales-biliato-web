@@ -112,7 +112,7 @@ document.querySelector("#app").innerHTML = /* HTML */ `
       <p class="eyebrow">Mi enfoque</p>
       <div class="about-grid">
         <div>
-          <h2>Diseño y desarrollo con atención al detalle.</h2>
+          <h2>Diseño y desarrollo con atención al detalle</h2>
         </div>
 
         <div class="about-content">
@@ -250,6 +250,15 @@ document.addEventListener("keydown", (event) => {
     closeMenu();
   }
 });
+
+const backToTop = document.querySelector(".back-to-top");
+
+function toggleBackToTop() {
+  backToTop.classList.toggle("is-visible", window.scrollY > 400);
+}
+
+window.addEventListener("scroll", toggleBackToTop, { passive: true });
+toggleBackToTop();
 
 const contactForm = document.querySelector(".contact-form");
 const contactFeedback = document.querySelector(".contact-feedback");
