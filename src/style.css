@@ -24,7 +24,7 @@
 .page-rays {
   position: fixed;
   inset: 0;
-  z-index: 101; /* por encima de la cabecera fija (z-index 100) */
+  z-index: -1; /* detrás de todo el texto, cabecera incluida */
   pointer-events: none;
 }
 
@@ -88,14 +88,17 @@ h2 {
   justify-content: space-between;
   align-items: center;
   padding: 0.75rem var(--gutter);
-  background: rgb(245 245 242 / 80%);
-  -webkit-backdrop-filter: blur(12px);
-  backdrop-filter: blur(12px);
-  transition: padding 0.3s ease;
+  background: transparent; /* arriba del todo se ve el sol detrás */
+  transition:
+    padding 0.3s ease,
+    background-color 0.3s ease;
 }
 
 .site-header.is-scrolled {
   padding-block: 0.45rem;
+  background: rgb(245 245 242 / 55%);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
 }
 
 .site-header.is-scrolled .brand {
