@@ -1,6 +1,7 @@
 import "./style.css";
 import { initReveal } from "./reveal";
 import { initTheme } from "./theme";
+import { initScrollUI } from "./scroll-ui";
 import proyectos from "virtual:proyectos";
 import { renderTarjeta } from "./proyectos-ui";
 
@@ -251,27 +252,7 @@ document.addEventListener("keydown", (event) => {
   }
 });
 
-const backToTop = document.querySelector(".back-to-top");
-const siteHeader = document.querySelector(".site-header");
-
-function toggleBackToTop() {
-  backToTop.classList.toggle("is-visible", window.scrollY > 400);
-}
-
-// Se reduce con el mínimo scroll. El ajuste automático de scroll del navegador
-// está desactivado en CSS (overflow-anchor) para que el cambio de altura de la
-// cabecera no mueva el scroll y provoque parpadeo.
-function toggleHeader() {
-  siteHeader.classList.toggle("is-scrolled", window.scrollY > 0);
-}
-
-function onScroll() {
-  toggleBackToTop();
-  toggleHeader();
-}
-
-window.addEventListener("scroll", onScroll, { passive: true });
-onScroll();
+initScrollUI();
 
 const contactForm = document.querySelector(".contact-form");
 const contactFeedback = document.querySelector(".contact-feedback");

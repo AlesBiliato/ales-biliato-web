@@ -1,6 +1,7 @@
 import "./style.css";
 import "./cuestionario.css";
 import { initTheme } from "./theme";
+import { initScrollUI } from "./scroll-ui";
 
 initTheme();
 
@@ -747,6 +748,8 @@ app.innerHTML = /* HTML */ `
     </section>
   </main>
 `;
+
+initScrollUI();
 
 const menuToggle = document.querySelector(".menu-toggle");
 const mainNav = document.querySelector(".main-nav");

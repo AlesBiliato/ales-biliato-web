@@ -6,6 +6,7 @@ import proyectos from "virtual:proyectos";
 import type { Proyecto } from "virtual:proyectos";
 import { initReveal } from "./reveal";
 import { initTheme } from "./theme";
+import { initScrollUI } from "./scroll-ui";
 import {
   esc,
   renderPortada,
@@ -261,6 +262,7 @@ app.innerHTML = /* HTML */ `
 `;
 
 initReveal();
+initScrollUI();
 
 const menuToggle = getRequiredElement<HTMLButtonElement>(".menu-toggle");
 
