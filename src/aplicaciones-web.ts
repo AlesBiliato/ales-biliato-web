@@ -2,6 +2,7 @@ import "./style.css";
 import "./paginas-web.css";
 import { initReveal } from "./reveal";
 import { initTheme } from "./theme";
+import { initScrollUI } from "./scroll-ui";
 
 initTheme();
 
@@ -290,6 +291,7 @@ app.innerHTML = /* HTML */ `
 `;
 
 initReveal();
+initScrollUI();
 
 const menuToggle = getRequiredElement<HTMLButtonElement>(".menu-toggle");
 

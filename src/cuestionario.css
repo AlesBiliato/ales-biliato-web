@@ -9,7 +9,7 @@
 .questionnaire-main {
   width: 100%;
   margin: 0;
-  padding: clamp(1rem, 3vw, 7rem) 5vw;
+  padding: clamp(1rem, 3vw, 7rem) var(--gutter);
 }
 
 .questionnaire-main h1 {
